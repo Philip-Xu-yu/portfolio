@@ -1,0 +1,327 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Demo：AI电商客服机器人 — 基础版 ¥99</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        font-family: system-ui, sans-serif;
+        background: #0a0a0a;
+        color: #e5e5e5;
+        min-height: 100vh;
+      }
+      .container {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 2rem;
+      }
+      .header {
+        text-align: center;
+        padding: 2rem 0;
+      }
+      .header h1 {
+        font-size: 1.8rem;
+        margin-bottom: 0.5rem;
+      }
+      .header p {
+        color: #888;
+      }
+      .badge {
+        display: inline-block;
+        padding: 0.3rem 1rem;
+        background: rgba(59, 130, 246, 0.1);
+        color: #3b82f6;
+        border-radius: 100px;
+        font-size: 0.85rem;
+        margin-bottom: 1rem;
+      }
+      .chat-container {
+        background: #141414;
+        border: 1px solid #222;
+        border-radius: 12px;
+        overflow: hidden;
+        margin-bottom: 2rem;
+      }
+      .chat-header {
+        background: #1a1a1a;
+        padding: 1rem 1.5rem;
+        border-bottom: 1px solid #222;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+      .chat-header .dot {
+        width: 8px;
+        height: 8px;
+        background: #22c55e;
+        border-radius: 50%;
+      }
+      .chat-header span {
+        font-size: 0.9rem;
+      }
+      .chat-messages {
+        padding: 1.5rem;
+        min-height: 400px;
+        max-height: 500px;
+        overflow-y: auto;
+      }
+      .msg {
+        margin-bottom: 1rem;
+        display: flex;
+        gap: 0.5rem;
+      }
+      .msg.user {
+        justify-content: flex-end;
+      }
+      .msg .bubble {
+        max-width: 70%;
+        padding: 0.8rem 1rem;
+        border-radius: 12px;
+        font-size: 0.9rem;
+        line-height: 1.5;
+      }
+      .msg.bot .bubble {
+        background: #1a1a1a;
+        border: 1px solid #333;
+      }
+      .msg.user .bubble {
+        background: #3b82f6;
+        color: white;
+      }
+      .msg .avatar {
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.8rem;
+        flex-shrink: 0;
+      }
+      .msg.bot .avatar {
+        background: #1a1a2e;
+      }
+      .msg.user .avatar {
+        background: #3b82f6;
+      }
+      .chat-input {
+        padding: 1rem 1.5rem;
+        border-top: 1px solid #222;
+        display: flex;
+        gap: 0.5rem;
+      }
+      .chat-input input {
+        flex: 1;
+        padding: 0.8rem;
+        background: #1a1a1a;
+        border: 1px solid #333;
+        border-radius: 8px;
+        color: #e5e5e5;
+        font-size: 0.9rem;
+      }
+      .chat-input button {
+        padding: 0.8rem 1.5rem;
+        background: #3b82f6;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+      }
+      .quick-replies {
+        display: flex;
+        gap: 0.5rem;
+        flex-wrap: wrap;
+        padding: 0 1.5rem 1rem;
+      }
+      .quick-replies button {
+        padding: 0.4rem 0.8rem;
+        background: #1a1a1a;
+        border: 1px solid #333;
+        border-radius: 100px;
+        color: #888;
+        font-size: 0.8rem;
+        cursor: pointer;
+      }
+      .quick-replies button:hover {
+        border-color: #3b82f6;
+        color: #3b82f6;
+      }
+      .info {
+        background: #141414;
+        border: 1px solid #222;
+        border-radius: 12px;
+        padding: 1.5rem;
+        margin-bottom: 2rem;
+      }
+      .info h2 {
+        font-size: 1.1rem;
+        margin-bottom: 1rem;
+      }
+      .info ul {
+        list-style: none;
+      }
+      .info ul li {
+        padding: 0.5rem 0;
+        border-bottom: 1px solid #222;
+        font-size: 0.9rem;
+      }
+      .info ul li:last-child {
+        border-bottom: none;
+      }
+      .info ul li::before {
+        content: "✓ ";
+        color: #3b82f6;
+      }
+      .cta {
+        text-align: center;
+        padding: 2rem 0;
+      }
+      .cta a {
+        display: inline-block;
+        padding: 1rem 2rem;
+        background: #3b82f6;
+        color: white;
+        border-radius: 8px;
+        text-decoration: none;
+      }
+      footer {
+        text-align: center;
+        padding: 2rem;
+        color: #555;
+        font-size: 0.85rem;
+        border-top: 1px solid #222;
+      }
+      footer a {
+        color: #3b82f6;
+        text-decoration: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <span class="badge">基础版 ¥99 演示</span>
+        <h1>AI电商客服机器人</h1>
+        <p>模拟一个电商店铺的AI客服，自动回复客户常见问题</p>
+      </div>
+
+      <div class="chat-container">
+        <div class="chat-header">
+          <div class="dot"></div>
+          <span>AI客服 — 在线</span>
+        </div>
+        <div class="chat-messages" id="messages">
+          <div class="msg bot">
+            <div class="avatar">AI</div>
+            <div class="bubble">
+              您好！我是店铺AI客服，请问有什么可以帮您的？😊
+            </div>
+          </div>
+        </div>
+        <div class="quick-replies">
+          <button onclick="sendMsg('发货时间是多久？')">发货时间</button>
+          <button onclick="sendMsg('可以退货吗？')">退换货政策</button>
+          <button onclick="sendMsg('有优惠券吗？')">优惠券</button>
+          <button onclick="sendMsg('怎么查物流？')">查物流</button>
+          <button onclick="sendMsg('质量问题怎么办？')">质量问题</button>
+        </div>
+        <div class="chat-input">
+          <input
+            type="text"
+            id="userInput"
+            placeholder="输入您的问题..."
+            onkeydown="if (event.key === 'Enter') sendMsg();"
+          />
+          <button onclick="sendMsg()">发送</button>
+        </div>
+      </div>
+
+      <div class="info">
+        <h2>这个Demo展示了什么</h2>
+        <ul>
+          <li>AI自动回复客户常见问题</li>
+          <li>支持多轮对话，记住上下文</li>
+          <li>快捷回复按钮，一键提问</li>
+          <li>可嵌入任何网站或店铺</li>
+          <li>24小时不休息，秒级回复</li>
+        </ul>
+      </div>
+
+      <div class="info">
+        <h2>定制你自己的AI客服</h2>
+        <ul>
+          <li>提供你的FAQ（常见问题和答案）</li>
+          <li>1-2天交付</li>
+          <li>部署到可访问的URL</li>
+          <li>包含使用文档</li>
+          <li>7天售后支持</li>
+        </ul>
+      </div>
+
+      <div class="cta">
+        <a href="../index.html#contact">定制你自己的AI客服 → ¥99</a>
+      </div>
+    </div>
+
+    <footer>
+      <p><a href="../index.html">← 返回作品集</a> | © 2026 AI工作室</p>
+    </footer>
+
+    <script>
+      const faqs = {
+        发货时间:
+          "我们拍下后48小时内发货，默认顺丰包邮。如果遇到大促期间，可能会延迟1-2天，请您谅解~",
+        退换货:
+          "支持7天无理由退换货哦！商品不影响二次销售即可。退换货运费由我们承担，请放心购买~",
+        优惠券:
+          "有的！关注店铺可以领取5元无门槛优惠券。另外满199减20，满299减50，很划算的~",
+        物流: "您可以在订单详情里查看物流信息。如果显示已签收但没收到，请联系我帮您查询~",
+        质量: "我们所有商品都经过严格质检。如果收到商品有质量问题，请拍照发给我，我们支持无条件退换，运费我们承担~",
+        尺码: "请参考商品详情页的尺码表。如果不确定，可以告诉我您的身高体重，我帮您推荐~",
+        付款: "支持支付宝、微信、花呗等多种付款方式。如果付款遇到问题，可以刷新页面重试~",
+        发票: "可以开电子发票哦！下单时备注发票信息（公司名称、税号），我们会尽快开具~",
+      };
+
+      function findAnswer(question) {
+        for (const [key, answer] of Object.entries(faqs)) {
+          if (question.includes(key)) return answer;
+        }
+        return "感谢您的咨询！这个问题我需要转接人工客服为您处理，请稍等~ 如果您有其他问题，也可以直接问我哦！";
+      }
+
+      function addMsg(text, isUser) {
+        const div = document.createElement("div");
+        div.className = "msg " + (isUser ? "user" : "bot");
+        div.innerHTML = isUser
+          ? '<div class="bubble">' + text + '</div><div class="avatar">我</div>'
+          : '<div class="avatar">AI</div><div class="bubble">' +
+            text +
+            "</div>";
+        document.getElementById("messages").appendChild(div);
+        document.getElementById("messages").scrollTop =
+          document.getElementById("messages").scrollHeight;
+      }
+
+      function sendMsg(text) {
+        const input = document.getElementById("userInput");
+        const msg = text || input.value.trim();
+        if (!msg) return;
+        addMsg(msg, true);
+        input.value = "";
+
+        setTimeout(
+          () => {
+            addMsg(findAnswer(msg), false);
+          },
+          500 + Math.random() * 500,
+        );
+      }
+    </script>
+  </body>
+</html>

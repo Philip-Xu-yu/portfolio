@@ -1,0 +1,348 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI自媒体起号助手 — 在线演示</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        font-family: system-ui, sans-serif;
+        background: #0a0a0a;
+        color: #e5e5e5;
+        min-height: 100vh;
+      }
+      .header {
+        text-align: center;
+        padding: 3rem 2rem 2rem;
+      }
+      .header h1 {
+        font-size: 2rem;
+        margin-bottom: 0.5rem;
+      }
+      .header p {
+        color: #888;
+      }
+      .container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 0 2rem 3rem;
+      }
+      .section {
+        background: #141414;
+        border: 1px solid #222;
+        border-radius: 12px;
+        padding: 1.5rem;
+        margin-bottom: 1.5rem;
+      }
+      .section h2 {
+        font-size: 1.2rem;
+        margin-bottom: 1rem;
+      }
+      label {
+        display: block;
+        font-size: 0.9rem;
+        color: #888;
+        margin-bottom: 0.3rem;
+      }
+      input,
+      select,
+      textarea {
+        width: 100%;
+        padding: 0.8rem;
+        background: #1a1a1a;
+        border: 1px solid #333;
+        border-radius: 8px;
+        color: #e5e5e5;
+        font-size: 1rem;
+        margin-bottom: 1rem;
+        font-family: inherit;
+      }
+      textarea {
+        min-height: 120px;
+        resize: vertical;
+      }
+      button {
+        padding: 0.8rem 2rem;
+        background: #3b82f6;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        font-size: 1rem;
+        cursor: pointer;
+      }
+      button:hover {
+        background: #2563eb;
+      }
+      .result {
+        background: #1a1a1a;
+        border: 1px solid #333;
+        border-radius: 8px;
+        padding: 1.5rem;
+        margin-top: 1rem;
+        white-space: pre-wrap;
+        line-height: 1.8;
+        font-size: 0.95rem;
+      }
+      .note {
+        background: #1a1a2e;
+        border: 1px solid #2a2a4e;
+        border-radius: 8px;
+        padding: 1rem;
+        margin-bottom: 1.5rem;
+        font-size: 0.9rem;
+        color: #888;
+      }
+      .note strong {
+        color: #3b82f6;
+      }
+      .demo-input {
+        background: #1a1a2e;
+        border: 1px dashed #333;
+        border-radius: 8px;
+        padding: 1rem;
+        margin-bottom: 1rem;
+      }
+      .demo-input h3 {
+        font-size: 1rem;
+        margin-bottom: 0.5rem;
+        color: #3b82f6;
+      }
+      .demo-input pre {
+        white-space: pre-wrap;
+        line-height: 1.6;
+        font-size: 0.9rem;
+      }
+      .copy-btn {
+        padding: 0.4rem 1rem;
+        background: #333;
+        font-size: 0.85rem;
+        margin-top: 0.5rem;
+      }
+      .copy-btn:hover {
+        background: #444;
+      }
+      footer {
+        text-align: center;
+        padding: 2rem;
+        color: #555;
+        font-size: 0.85rem;
+        border-top: 1px solid #222;
+      }
+      footer a {
+        color: #3b82f6;
+        text-decoration: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="header">
+      <h1>🚀 AI自媒体起号助手</h1>
+      <p>在线演示版 — 体验AI如何帮你规划自媒体内容</p>
+    </div>
+
+    <div class="container">
+      <div class="note">
+        <strong>📌 演示说明：</strong
+        >这是一个静态演示页，展示工具的核心功能和输出效果。
+        完整版需要部署后端服务（FastAPI + OpenAI API）。 如需定制部署，请<a
+          href="../../index.html#contact"
+          style="color: #3b82f6"
+          >联系我</a
+        >。
+      </div>
+
+      <!-- 功能1：账号定位 -->
+      <div class="section">
+        <h2>📋 功能1：账号定位方案</h2>
+        <p style="color: #888; margin-bottom: 1rem; font-size: 0.9rem">
+          输入你的领域，AI自动生成完整的账号定位方案
+        </p>
+
+        <div class="demo-input">
+          <h3>示例输入</h3>
+          <pre>
+领域：AI工具测评
+平台：小红书
+目标人群：25-35岁职场白领</pre
+          >
+        </div>
+
+        <div class="demo-input">
+          <h3>AI输出</h3>
+          <pre>
+🎯 账号定位方案
+
+📌 账号人设
+"AI工具猎手" — 专注挖掘实用AI工具的测评博主
+人设关键词：专业、接地气、实操派
+
+📝 内容方向
+1. AI工具深度测评（40%）
+2. AI使用教程/技巧（30%）
+3. AI行业动态解读（15%）
+4. 个人AI使用心得（15%）
+
+🔥 差异化定位
+- 不做"大而全"的AI科普，只做"用完就想收藏"的实操测评
+- 每篇测评包含：真实使用截图 + 效率对比 + 适用人群
+- 固定栏目："3分钟学会一个AI工具"
+
+💰 变现路径
+阶段1（0-1000粉）：积累内容，建立信任
+阶段2（1000-5000粉）：接AI工具推广、开设付费社群
+阶段3（5000+粉）：AI工具使用课程、1对1咨询服务</pre
+          >
+        </div>
+        <button class="copy-btn" onclick="copyText(this)">复制结果</button>
+      </div>
+
+      <!-- 功能2：爆款选题 -->
+      <div class="section">
+        <h2>💡 功能2：爆款选题生成</h2>
+        <p style="color: #888; margin-bottom: 1rem; font-size: 0.9rem">
+          输入热点或留空，AI生成10个有爆款潜力的选题
+        </p>
+
+        <div class="demo-input">
+          <h3>示例输入</h3>
+          <pre>
+领域：AI工具测评
+热点：Claude 4发布</pre
+          >
+        </div>
+
+        <div class="demo-input">
+          <h3>AI输出</h3>
+          <pre>
+🔥 10个爆款选题
+
+1. 《Claude 4实测：写代码能力碾压GPT-4？我测了10个场景》
+   角度：对比测评 | 预估热度：⭐⭐⭐⭐⭐
+
+2. 《我用Claude 4一天干完了3天的活，这些技巧你必须知道》
+   角度：效率提升 | 预估热度：⭐⭐⭐⭐⭐
+
+3. 《ChatGPT要慌了？Claude 4这5个能力直接封神》
+   角度：行业对比 | 预估热度：⭐⭐⭐⭐
+
+4. 《AI工具党必看：Claude 4免费使用攻略》
+   角度：实用教程 | 预估热度：⭐⭐⭐⭐
+
+5. 《我让Claude 4和GPT-4同时写文案，结果差距太大了》
+   角度：实测对比 | 预估热度：⭐⭐⭐⭐
+
+6. 《打工人必看：用Claude 4自动做PPT，10分钟搞定》
+   角度：职场效率 | 预估热度：⭐⭐⭐⭐
+
+7. 《Claude 4的隐藏功能，99%的人不知道》
+   角度：揭秘型 | 预估热度：⭐⭐⭐
+
+8. 《AI写作工具大横评：Claude 4 vs GPT-4 vs 文心一言》
+   角度：多工具对比 | 预估热度：⭐⭐⭐
+
+9. 《我用Claude 4做了一个自动化工作流，省了80%时间》
+   角度：自动化 | 预估热度：⭐⭐⭐
+
+10. 《Claude 4适合什么人用？这3类人千万别错过》
+    角度：人群定位 | 预估热度：⭐⭐⭐</pre
+          >
+        </div>
+        <button class="copy-btn" onclick="copyText(this)">复制结果</button>
+      </div>
+
+      <!-- 功能3：完整文案 -->
+      <div class="section">
+        <h2>✍️ 功能3：完整文案生成</h2>
+        <p style="color: #888; margin-bottom: 1rem; font-size: 0.9rem">
+          输入选题，AI生成可直接发布的完整文案
+        </p>
+
+        <div class="demo-input">
+          <h3>示例输入</h3>
+          <pre>
+选题：Claude 4实测：写代码能力碾压GPT-4？
+平台：小红书
+风格：干货分享</pre
+          >
+        </div>
+
+        <div class="demo-input">
+          <h3>AI输出</h3>
+          <pre>
+📝 完整文案
+
+标题：Claude 4实测｜写代码能力碾压GPT-4？我测了10个场景告诉你真相
+
+正文：
+姐妹们！Claude 4发布了，吹得天花乱坠说写代码吊打GPT-4
+作为一个每天用AI写代码的人，我直接实测给你们看👇
+
+🔬 测试场景1：写Python爬虫
+Claude 4：一次跑通，代码整洁，还加了错误处理 ⭐5分
+GPT-4：跑了一次报错，修改后才成功 ⭐3分
+
+🔬 测试场景2：写SQL查询
+Claude 4：理解复杂需求，JOIN写得很漂亮 ⭐5分
+GPT-4：基础查询没问题，复杂场景略逊 ⭐4分
+
+🔬 测试场景3：Debug现有代码
+Claude 4：直接定位问题，还解释了原因 ⭐5分
+GPT-4：能找到问题，但解释不够清晰 ⭐4分
+
+📊 总结
+写代码这块，Claude 4确实更强！
+主要体现在：
+✅ 一次成功率更高
+✅ 代码质量更好
+✅ 错误处理更完善
+
+但GPT-4在创意写作方面依然更强
+所以：写代码用Claude 4，写文案用GPT-4 ✌️
+
+💡 你们平时用哪个AI写代码？评论区聊聊~
+
+#AI #Claude4 #GPT4 #AI工具 #效率提升 #程序员 #写代码 #AI测评</pre
+          >
+        </div>
+        <button class="copy-btn" onclick="copyText(this)">复制结果</button>
+      </div>
+
+      <div class="section" style="text-align: center">
+        <h2>想要完整可部署版本？</h2>
+        <p style="color: #888; margin: 1rem 0">
+          包含后端API、在线使用、自定义配置
+        </p>
+        <a
+          href="../../index.html#contact"
+          style="
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            background: #3b82f6;
+            color: white;
+            border-radius: 8px;
+            text-decoration: none;
+          "
+          >联系我定制</a
+        >
+      </div>
+    </div>
+
+    <footer>
+      <p><a href="../../index.html">← 返回作品集</a> | © 2026 AI工作室</p>
+    </footer>
+
+    <script>
+      function copyText(btn) {
+        const pre = btn.previousElementSibling.querySelector("pre");
+        navigator.clipboard.writeText(pre.textContent);
+        btn.textContent = "已复制 ✓";
+        setTimeout(() => (btn.textContent = "复制结果"), 2000);
+      }
+    </script>
+  </body>
+</html>

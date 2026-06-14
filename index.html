@@ -1,0 +1,461 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI工作室 — 用AI解决具体问题</title>
+    <meta
+      name="description"
+      content="AI自动化服务工作室，帮小企业主用AI解决客服、内容、数据分析等具体问题"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      :root {
+        --bg: #0a0a0a;
+        --surface: #141414;
+        --border: #222;
+        --text: #e5e5e5;
+        --text-secondary: #888;
+        --accent: #3b82f6;
+        --accent-hover: #2563eb;
+      }
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        background: var(--bg);
+        color: var(--text);
+        line-height: 1.6;
+      }
+      nav {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        background: rgba(10, 10, 10, 0.9);
+        backdrop-filter: blur(10px);
+        border-bottom: 1px solid var(--border);
+        z-index: 100;
+        padding: 0 2rem;
+      }
+      nav .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 60px;
+      }
+      nav .logo {
+        font-size: 1.2rem;
+        font-weight: 700;
+      }
+      nav .logo span {
+        color: var(--accent);
+      }
+      nav ul {
+        display: flex;
+        list-style: none;
+        gap: 2rem;
+      }
+      nav a {
+        color: var(--text-secondary);
+        text-decoration: none;
+        font-size: 0.9rem;
+      }
+      nav a:hover {
+        color: var(--text);
+      }
+      .hero {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 2rem;
+      }
+      .hero h1 {
+        font-size: clamp(2rem, 5vw, 4rem);
+        font-weight: 800;
+        line-height: 1.1;
+        margin-bottom: 1.5rem;
+      }
+      .hero h1 span {
+        color: var(--accent);
+      }
+      .hero p {
+        font-size: 1.2rem;
+        color: var(--text-secondary);
+        max-width: 600px;
+        margin-bottom: 2rem;
+      }
+      .hero .buttons {
+        display: flex;
+        gap: 1rem;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+      .btn {
+        padding: 0.8rem 2rem;
+        border-radius: 8px;
+        font-size: 1rem;
+        text-decoration: none;
+        cursor: pointer;
+        border: none;
+      }
+      .btn-primary {
+        background: var(--accent);
+        color: white;
+      }
+      .btn-primary:hover {
+        background: var(--accent-hover);
+      }
+      .btn-secondary {
+        background: transparent;
+        color: var(--text);
+        border: 1px solid var(--border);
+      }
+      .btn-secondary:hover {
+        border-color: var(--text-secondary);
+      }
+      section {
+        padding: 6rem 2rem;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+      section h2 {
+        font-size: 2rem;
+        margin-bottom: 1rem;
+      }
+      section .subtitle {
+        color: var(--text-secondary);
+        margin-bottom: 3rem;
+        font-size: 1.1rem;
+      }
+      .cases-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 1.5rem;
+      }
+      .case-card {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 1.5rem;
+      }
+      .case-card:hover {
+        border-color: var(--accent);
+      }
+      .case-card .tag {
+        display: inline-block;
+        padding: 0.25rem 0.75rem;
+        background: rgba(59, 130, 246, 0.1);
+        color: var(--accent);
+        border-radius: 100px;
+        font-size: 0.8rem;
+        margin-bottom: 1rem;
+      }
+      .case-card h3 {
+        font-size: 1.25rem;
+        margin-bottom: 0.5rem;
+      }
+      .case-card p {
+        color: var(--text-secondary);
+        font-size: 0.9rem;
+        margin-bottom: 1rem;
+      }
+      .case-card .links {
+        display: flex;
+        gap: 1rem;
+      }
+      .case-card .links a {
+        color: var(--accent);
+        text-decoration: none;
+        font-size: 0.85rem;
+      }
+      .services-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 1.5rem;
+      }
+      .service-card {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 2rem;
+        text-align: center;
+      }
+      .service-card.featured {
+        border-color: var(--accent);
+      }
+      .service-card .price {
+        font-size: 2.5rem;
+        font-weight: 800;
+        margin: 1rem 0 0.5rem;
+      }
+      .service-card .price span {
+        font-size: 1rem;
+        color: var(--text-secondary);
+      }
+      .service-card .desc {
+        color: var(--text-secondary);
+        margin-bottom: 1.5rem;
+      }
+      .service-card ul {
+        list-style: none;
+        text-align: left;
+        margin-bottom: 1.5rem;
+      }
+      .service-card ul li {
+        padding: 0.5rem 0;
+        border-bottom: 1px solid var(--border);
+        font-size: 0.9rem;
+      }
+      .service-card ul li::before {
+        content: "✓ ";
+        color: var(--accent);
+      }
+      .about-content {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 3rem;
+        align-items: center;
+      }
+      .about-content p {
+        color: var(--text-secondary);
+        margin-bottom: 1rem;
+      }
+      .skills {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin-top: 1rem;
+      }
+      .skills span {
+        padding: 0.4rem 1rem;
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 100px;
+        font-size: 0.85rem;
+      }
+      .contact-methods {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1.5rem;
+      }
+      .contact-card {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 1.5rem;
+        text-align: center;
+      }
+      .contact-card h3 {
+        margin-bottom: 0.5rem;
+      }
+      .contact-card p {
+        color: var(--text-secondary);
+        font-size: 0.9rem;
+      }
+      footer {
+        text-align: center;
+        padding: 2rem;
+        color: var(--text-secondary);
+        font-size: 0.85rem;
+        border-top: 1px solid var(--border);
+      }
+      @media (max-width: 768px) {
+        nav ul {
+          display: none;
+        }
+        .about-content {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <div class="container">
+        <div class="logo">AI<span>工作室</span></div>
+        <ul>
+          <li><a href="#cases">案例</a></li>
+          <li><a href="#services">服务</a></li>
+          <li><a href="blog.html">博客</a></li>
+          <li><a href="about.html">关于</a></li>
+          <li><a href="contact.html">联系</a></li>
+        </ul>
+      </div>
+    </nav>
+    <section class="hero">
+      <div>
+        <h1>用<span>AI</span>帮你解决<br />具体问题</h1>
+        <p>
+          不卖概念，不做平台。只帮小企业主用AI解决客服、内容、数据分析等实际问题。99元起，1-3天交付。
+        </p>
+        <div class="buttons">
+          <a href="#cases" class="btn btn-primary">看案例</a>
+          <a href="#services" class="btn btn-secondary">了解服务</a>
+        </div>
+      </div>
+    </section>
+    <section id="cases">
+      <h2>案例</h2>
+      <p class="subtitle">每个案例都是真实可运行的AI工具</p>
+      <div class="cases-grid">
+        <div class="case-card">
+          <span class="tag">自媒体</span>
+          <h3>AI自媒体起号助手</h3>
+          <p>
+            输入领域/赛道，自动生成账号定位、30天内容规划、爆款选题和完整文案。10分钟搞定一个月的内容计划。
+          </p>
+          <div class="links">
+            <a href="cases/ai-media-assistant/">GitHub →</a>
+            <a href="cases/ai-media-assistant/demo.html">在线演示 →</a>
+          </div>
+        </div>
+        <div class="case-card">
+          <span class="tag">内容分析</span>
+          <h3>AI爆款内容分析器</h3>
+          <p>
+            输入内容链接或文本，AI自动分析爆款因素：标题结构、情绪词、内容框架、CTA设计，并生成优化建议。
+          </p>
+          <div class="links">
+            <a href="cases/ai-content-analyzer/">GitHub →</a>
+            <a href="cases/ai-content-analyzer/demo.html">在线演示 →</a>
+          </div>
+        </div>
+        <div class="case-card">
+          <span class="tag">知识管理</span>
+          <h3>AI知识库问答助手</h3>
+          <p>
+            上传文档（PDF/TXT/MD），自动建立知识库。基于文档内容回答问题，支持多轮对话，显示答案来源。
+          </p>
+          <div class="links">
+            <a href="cases/ai-knowledge-qa/">GitHub →</a>
+            <a href="cases/ai-knowledge-qa/demo.html">在线演示 →</a>
+          </div>
+        </div>
+        <div class="case-card">
+          <span class="tag">自动化</span>
+          <h3>AI自动化工作流助手</h3>
+          <p>
+            可视化工作流编辑器，预置数据处理、内容生成、客服自动化等模板。支持定时执行和Webhook触发。
+          </p>
+          <div class="links">
+            <a href="cases/ai-workflow-assistant/">GitHub →</a>
+            <a href="cases/ai-workflow-assistant/demo.html">在线演示 →</a>
+          </div>
+        </div>
+        <div class="case-card">
+          <span class="tag">商业分析</span>
+          <h3>AI商业机会分析Agent</h3>
+          <p>
+            输入行业或产品想法，AI自动分析市场机会、竞品情况、可行性评估，生成商业模式画布和行动建议。
+          </p>
+          <div class="links">
+            <a href="cases/ai-biz-agent/">GitHub →</a>
+            <a href="cases/ai-biz-agent/demo.html">在线演示 →</a>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="services">
+      <h2>服务</h2>
+      <p class="subtitle">99元起，1-3天交付，包部署包售后</p>
+      <div class="services-grid">
+        <div class="service-card">
+          <h3>基础版</h3>
+          <div class="price">¥99 <span>/次</span></div>
+          <p class="desc">适合有简单需求的客户</p>
+          <ul>
+            <li>AI聊天机器人定制</li>
+            <li>AI自动化脚本</li>
+            <li>基础前端界面</li>
+            <li>部署到可访问URL</li>
+            <li>使用文档</li>
+            <li>7天售后支持</li>
+          </ul>
+          <a href="#contact" class="btn btn-secondary">咨询</a>
+        </div>
+        <div class="service-card featured">
+          <h3>标准版</h3>
+          <div class="price">¥299 <span>/次</span></div>
+          <p class="desc">适合需要完整功能的客户</p>
+          <ul>
+            <li>AI应用定制（知识库/分析器）</li>
+            <li>自定义UI样式</li>
+            <li>多轮对话支持</li>
+            <li>数据持久化</li>
+            <li>完整文档+教程</li>
+            <li>14天售后支持</li>
+          </ul>
+          <a href="#contact" class="btn btn-primary">咨询</a>
+        </div>
+        <div class="service-card">
+          <h3>高级版</h3>
+          <div class="price">¥499 <span>/次</span></div>
+          <p class="desc">适合需要完整系统的客户</p>
+          <ul>
+            <li>完整AI系统定制</li>
+            <li>前后端完整开发</li>
+            <li>集成到客户网站</li>
+            <li>数据分析仪表盘</li>
+            <li>源代码交付</li>
+            <li>30天售后支持</li>
+          </ul>
+          <a href="#contact" class="btn btn-secondary">咨询</a>
+        </div>
+      </div>
+    </section>
+    <section id="about">
+      <h2>关于</h2>
+      <p class="subtitle">一个人的AI工作室</p>
+      <div class="about-content">
+        <div>
+          <p>我是一个AI开发者，专注于用AI解决小企业主的实际问题。</p>
+          <p>
+            不做平台，不做SaaS，不做概念产品。只做一件事：帮你用AI解决具体问题。
+          </p>
+          <p>
+            每个案例都是真实可运行的工具，每个服务都有明确的交付物和交付时间。
+          </p>
+        </div>
+        <div>
+          <div class="skills">
+            <span>FastAPI</span>
+            <span>Python</span>
+            <span>OpenAI API</span>
+            <span>AI Agent</span>
+            <span>自动化</span>
+            <span>数据分析</span>
+            <span>前端开发</span>
+            <span>部署运维</span>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="contact">
+      <h2>联系</h2>
+      <p class="subtitle">有需求？聊聊看</p>
+      <div class="contact-methods">
+        <div class="contact-card">
+          <h3>微信</h3>
+          <p>添加微信，备注"AI服务"</p>
+        </div>
+        <div class="contact-card">
+          <h3>邮箱</h3>
+          <p>your-email@example.com</p>
+        </div>
+        <div class="contact-card">
+          <h3>闲鱼</h3>
+          <p>搜索"AI定制开发"</p>
+        </div>
+      </div>
+    </section>
+    <footer>
+      <p>© 2026 AI工作室 — 用AI解决具体问题</p>
+    </footer>
+  </body>
+</html>

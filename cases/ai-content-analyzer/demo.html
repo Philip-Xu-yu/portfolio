@@ -1,0 +1,275 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI爆款内容分析器 — 在线演示</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        font-family: system-ui, sans-serif;
+        background: #0a0a0a;
+        color: #e5e5e5;
+        min-height: 100vh;
+      }
+      .header {
+        text-align: center;
+        padding: 3rem 2rem 2rem;
+      }
+      .header h1 {
+        font-size: 2rem;
+        margin-bottom: 0.5rem;
+      }
+      .header p {
+        color: #888;
+      }
+      .container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 0 2rem 3rem;
+      }
+      .section {
+        background: #141414;
+        border: 1px solid #222;
+        border-radius: 12px;
+        padding: 1.5rem;
+        margin-bottom: 1.5rem;
+      }
+      .section h2 {
+        font-size: 1.2rem;
+        margin-bottom: 1rem;
+      }
+      .note {
+        background: #1a1a2e;
+        border: 1px solid #2a2a4e;
+        border-radius: 8px;
+        padding: 1rem;
+        margin-bottom: 1.5rem;
+        font-size: 0.9rem;
+        color: #888;
+      }
+      .note strong {
+        color: #3b82f6;
+      }
+      .demo-input {
+        background: #1a1a2e;
+        border: 1px dashed #333;
+        border-radius: 8px;
+        padding: 1rem;
+        margin-bottom: 1rem;
+      }
+      .demo-input h3 {
+        font-size: 1rem;
+        margin-bottom: 0.5rem;
+        color: #3b82f6;
+      }
+      .demo-input pre {
+        white-space: pre-wrap;
+        line-height: 1.6;
+        font-size: 0.9rem;
+      }
+      .copy-btn {
+        padding: 0.4rem 1rem;
+        background: #333;
+        color: #e5e5e5;
+        border: none;
+        border-radius: 8px;
+        font-size: 0.85rem;
+        cursor: pointer;
+        margin-top: 0.5rem;
+      }
+      .copy-btn:hover {
+        background: #444;
+      }
+      footer {
+        text-align: center;
+        padding: 2rem;
+        color: #555;
+        font-size: 0.85rem;
+        border-top: 1px solid #222;
+      }
+      footer a {
+        color: #3b82f6;
+        text-decoration: none;
+      }
+      .score {
+        font-size: 3rem;
+        font-weight: 800;
+        color: #3b82f6;
+        text-align: center;
+        margin: 1rem 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="header">
+      <h1>📊 AI爆款内容分析器</h1>
+      <p>在线演示版 — 体验AI如何分析内容爆款因素</p>
+    </div>
+
+    <div class="container">
+      <div class="note">
+        <strong>📌 演示说明：</strong
+        >这是一个静态演示页，展示工具的核心功能和输出效果。
+        完整版需要部署后端服务（FastAPI + OpenAI API）。 如需定制部署，请<a
+          href="../../index.html#contact"
+          style="color: #3b82f6"
+          >联系我</a
+        >。
+      </div>
+
+      <div class="section">
+        <h2>🔍 功能：内容爆款分析</h2>
+        <div class="demo-input">
+          <h3>示例输入</h3>
+          <pre>
+标题：打工人必看！这5个AI工具让我效率翻倍，老板都惊了
+
+正文：
+姐妹们！我终于找到让工作效率翻倍的秘密了！
+之前每天加班到9点，现在6点准时下班✌️
+
+这5个AI工具真的改变了我的工作方式👇
+
+1️⃣ ChatGPT — 写邮件、写报告
+以前写一封邮件要30秒，现在10秒搞定
+关键：给它一个模板，让它学习你的风格
+
+2️⃣ Midjourney — 做PPT配图
+再也不用在素材网站翻半天了
+输入描述，10秒出图，质量吊打90%素材
+
+3️⃣ Notion AI — 整理笔记
+开会记录、项目管理、知识库全搞定
+最绝的是它能自动总结会议纪要
+
+4️⃣ Claude — 写代码
+程序员必装！写代码比GPT-4还强
+debug能力更是绝了
+
+5️⃣ Gamma — 做PPT
+输入大纲，自动生成完整PPT
+设计感拉满，再也不用套模板了
+
+💡 你们平时用什么AI工具？评论区分享一下~
+
+#AI #效率工具 #打工人 #职场 #ChatGPT #AI工具</pre
+          >
+        </div>
+
+        <div class="demo-input">
+          <h3>AI分析结果</h3>
+          <div class="score">8.5/10</div>
+          <pre>
+📊 爆款因素分析
+
+1️⃣ 标题分析
+✅ 吸引力：强 — "打工人必看"精准定位人群
+✅ 数字使用："5个"具体数量，降低阅读门槛
+✅ 情绪词："翻倍""惊了"制造兴奋感
+✅ 痛点切入：效率问题是职场人核心痛点
+⚠️ 改进空间：可加入"免费"等利益词
+
+2️⃣ 内容结构
+✅ 钩子：开头用个人故事引入（加班→准时下班）
+✅ 框架：清单式结构，每项独立，易于阅读
+✅ CTA：结尾有互动引导（评论区分享）
+✅ 节奏：emoji + 数字 + 短句，符合小红书风格
+
+3️⃣ 情绪触发点
+🔥 焦虑：加班、效率低
+🔥 希望：找到解决方案
+🔥 好奇：想知道具体工具
+🔥 认同：打工人身份共鸣
+
+4️⃣ 平台适配度
+✅ 语言风格：符合小红书口语化表达
+✅ 内容长度：适中（500字左右）
+✅ 标签使用：覆盖核心关键词
+✅ 互动设计：有CTA引导评论
+
+5️⃣ 可借鉴亮点
+⭐ 个人故事引入（增加真实感）
+⭐ 清单式结构（降低阅读门槛）
+⭐ 每项都有"使用场景"（增加实用性）
+⭐ 结尾互动引导（提升评论量）</pre
+          >
+        </div>
+        <button class="copy-btn" onclick="copyText(this)">复制结果</button>
+      </div>
+
+      <div class="section">
+        <h2>✨ 功能：优化建议</h2>
+        <div class="demo-input">
+          <h3>AI优化建议</h3>
+          <pre>
+🔧 优化建议
+
+问题1：标题可更具体
+原标题：打工人必看！这5个AI工具让我效率翻倍
+优化后：月薪5k到15k｜这5个AI工具让我的效率翻了3倍
+理由：加入薪资对比更有冲击力
+
+问题2：缺少对比数据
+现状：只说"效率翻倍"
+优化：加入具体时间对比
+示例："写报告从2小时→30分钟"
+理由：数据更有说服力
+
+问题3：工具介绍可更深入
+现状：每个工具只有一句话
+优化：加入1个具体使用场景
+示例："上周老板让我写竞品分析，我用ChatGPT 10分钟搞定，以前至少要2小时"
+
+问题4：缺少收藏引导
+现状：只有评论引导
+优化：加入"收藏备用"
+示例："建议先收藏，以后用得上👇"
+
+问题5：标签可更精准
+现状：#AI #效率工具
+优化：加入长尾标签
+示例：#AI工具推荐 #职场效率 #打工人必备 #下班自由</pre
+          >
+        </div>
+        <button class="copy-btn" onclick="copyText(this)">复制结果</button>
+      </div>
+
+      <div class="section" style="text-align: center">
+        <h2>想要完整可部署版本？</h2>
+        <p style="color: #888; margin: 1rem 0">
+          包含后端API、在线使用、批量分析
+        </p>
+        <a
+          href="../../index.html#contact"
+          style="
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            background: #3b82f6;
+            color: white;
+            border-radius: 8px;
+            text-decoration: none;
+          "
+          >联系我定制</a
+        >
+      </div>
+    </div>
+
+    <footer>
+      <p><a href="../../index.html">← 返回作品集</a> | © 2026 AI工作室</p>
+    </footer>
+
+    <script>
+      function copyText(btn) {
+        const pre = btn.previousElementSibling.querySelector("pre");
+        navigator.clipboard.writeText(pre.textContent);
+        btn.textContent = "已复制 ✓";
+        setTimeout(() => (btn.textContent = "复制结果"), 2000);
+      }
+    </script>
+  </body>
+</html>

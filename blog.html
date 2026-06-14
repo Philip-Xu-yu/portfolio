@@ -1,0 +1,489 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>博客 — AI工作室</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        font-family: system-ui, sans-serif;
+        background: #0a0a0a;
+        color: #e5e5e5;
+      }
+      nav {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        background: rgba(10, 10, 10, 0.9);
+        backdrop-filter: blur(10px);
+        border-bottom: 1px solid #222;
+        z-index: 100;
+        padding: 0 2rem;
+      }
+      nav .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 60px;
+      }
+      nav .logo {
+        font-size: 1.2rem;
+        font-weight: 700;
+      }
+      nav .logo span {
+        color: #3b82f6;
+      }
+      nav a {
+        color: #888;
+        text-decoration: none;
+        font-size: 0.9rem;
+        margin-left: 2rem;
+      }
+      nav a:hover {
+        color: #e5e5e5;
+      }
+      .container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 6rem 2rem 3rem;
+      }
+      h1 {
+        font-size: 2rem;
+        margin-bottom: 0.5rem;
+      }
+      .subtitle {
+        color: #888;
+        margin-bottom: 2rem;
+      }
+      .filter {
+        display: flex;
+        gap: 0.5rem;
+        flex-wrap: wrap;
+        margin-bottom: 2rem;
+      }
+      .filter button {
+        padding: 0.4rem 1rem;
+        background: #1a1a1a;
+        border: 1px solid #333;
+        border-radius: 100px;
+        color: #888;
+        font-size: 0.85rem;
+        cursor: pointer;
+      }
+      .filter button.active {
+        background: #3b82f6;
+        border-color: #3b82f6;
+        color: white;
+      }
+      .post {
+        background: #141414;
+        border: 1px solid #222;
+        border-radius: 12px;
+        padding: 1.5rem;
+        margin-bottom: 1rem;
+      }
+      .post:hover {
+        border-color: #3b82f6;
+      }
+      .post .tag {
+        display: inline-block;
+        padding: 0.2rem 0.6rem;
+        background: rgba(59, 130, 246, 0.1);
+        color: #3b82f6;
+        border-radius: 100px;
+        font-size: 0.75rem;
+        margin-bottom: 0.5rem;
+      }
+      .post h2 {
+        font-size: 1.1rem;
+        margin-bottom: 0.5rem;
+      }
+      .post h2 a {
+        color: #e5e5e5;
+        text-decoration: none;
+      }
+      .post h2 a:hover {
+        color: #3b82f6;
+      }
+      .post p {
+        color: #888;
+        font-size: 0.9rem;
+      }
+      .post .meta {
+        color: #555;
+        font-size: 0.8rem;
+        margin-top: 0.5rem;
+      }
+      footer {
+        text-align: center;
+        padding: 2rem;
+        color: #555;
+        font-size: 0.85rem;
+        border-top: 1px solid #222;
+        margin-top: 3rem;
+      }
+      footer a {
+        color: #3b82f6;
+        text-decoration: none;
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <div class="container">
+        <div class="logo">AI<span>工作室</span></div>
+        <div>
+          <a href="index.html">首页</a>
+          <a href="blog.html">博客</a>
+        </div>
+      </div>
+    </nav>
+    <div class="container">
+      <h1>博客</h1>
+      <p class="subtitle">30篇AI工具案例拆解、开发实录、行业应用</p>
+
+      <div class="filter">
+        <button class="active" onclick="filterPosts('all')">全部</button>
+        <button onclick="filterPosts('case')">案例拆解</button>
+        <button onclick="filterPosts('industry')">行业应用</button>
+        <button onclick="filterPosts('guide')">教程</button>
+        <button onclick="filterPosts('think')">思考</button>
+      </div>
+
+      <div id="posts">
+        <div class="post" data-cat="case">
+          <span class="tag">综合</span>
+          <h2>
+            <a href="blog/06-five-ai-tools-summary.md"
+              >5个AI工具，解决自媒体、内容、知识库、自动化、商业分析5大场景</a
+            >
+          </h2>
+          <p>大多数人不是不想用AI，而是不知道AI能帮他们解决什么具体问题。</p>
+          <div class="meta">2026-06-12</div>
+        </div>
+        <div class="post" data-cat="case">
+          <span class="tag">自媒体</span>
+          <h2>
+            <a href="blog/01-ai-media-assistant.md"
+              >我用AI做了一个自媒体起号助手，10分钟生成30天内容规划</a
+            >
+          </h2>
+          <p>
+            朋友想做小红书，但每天为选题发愁。我用Claude
+            Code花4小时做了一个AI自媒体起号助手。
+          </p>
+          <div class="meta">2026-06-12</div>
+        </div>
+        <div class="post" data-cat="case">
+          <span class="tag">内容分析</span>
+          <h2>
+            <a href="blog/02-ai-content-analyzer.md"
+              >我做了一个AI爆款分析器，拆解了100篇10w+文章的秘密</a
+            >
+          </h2>
+          <p>爆款不是玄学，是科学。AI可以帮你快速拆解爆款因素。</p>
+          <div class="meta">2026-06-12</div>
+        </div>
+        <div class="post" data-cat="case">
+          <span class="tag">知识库</span>
+          <h2>
+            <a href="blog/03-ai-knowledge-qa.md"
+              >上传一份文档，AI就能回答所有问题</a
+            >
+          </h2>
+          <p>一个做电商的朋友问我：我有500个FAQ，能不能让AI自动回答？能。</p>
+          <div class="meta">2026-06-12</div>
+        </div>
+        <div class="post" data-cat="case">
+          <span class="tag">自动化</span>
+          <h2>
+            <a href="blog/04-ai-workflow-assistant.md"
+              >不会编程也能做自动化？这个AI工作流助手帮你省80%时间</a
+            >
+          </h2>
+          <p>每天早上9点的重复工作，我交给了AI。现在每天省2小时。</p>
+          <div class="meta">2026-06-12</div>
+        </div>
+        <div class="post" data-cat="case">
+          <span class="tag">商业分析</span>
+          <h2>
+            <a href="blog/05-ai-biz-agent.md"
+              >想创业但不知道做什么？这个AI帮你分析商业机会</a
+            >
+          </h2>
+          <p>创业最大的风险不是做错了，而是方向选错了。</p>
+          <div class="meta">2026-06-12</div>
+        </div>
+        <div class="post" data-cat="guide">
+          <span class="tag">科普</span>
+          <h2>
+            <a href="blog/07-ai-tools-for-beginners.md"
+              >不会编程也能用AI？这3个工具帮你省下80%时间</a
+            >
+          </h2>
+          <p>
+            很多人觉得AI很难用，其实不是。打开网页就能用，不需要任何技术基础。
+          </p>
+          <div class="meta">2026-06-12</div>
+        </div>
+        <div class="post" data-cat="industry">
+          <span class="tag">电商</span>
+          <h2>
+            <a href="blog/08-ecommerce-ai-chatbot.md"
+              >电商卖家必看：用AI客服机器人，每天省3小时</a
+            >
+          </h2>
+          <p>做电商最烦的是回复客户消息。一个AI客服机器人帮你解决。</p>
+          <div class="meta">2026-06-12</div>
+        </div>
+        <div class="post" data-cat="industry">
+          <span class="tag">自媒体</span>
+          <h2>
+            <a href="blog/09-xiaohongshu-ai-writing.md"
+              >小红书文案写不出来？AI帮你10分钟出一篇爆款</a
+            >
+          </h2>
+          <p>做小红书最痛苦的是写文案。AI帮你从0到1。</p>
+          <div class="meta">2026-06-12</div>
+        </div>
+        <div class="post" data-cat="think">
+          <span class="tag">认知</span>
+          <h2>
+            <a href="blog/10-ai-vs-manual.md"
+              >AI vs 人工：哪些工作AI做得更好，哪些必须人来做</a
+            >
+          </h2>
+          <p>AI不会取代人，但会取代不会用AI的人。</p>
+          <div class="meta">2026-06-12</div>
+        </div>
+        <div class="post" data-cat="guide">
+          <span class="tag">教程</span>
+          <h2>
+            <a href="blog/11-ai-customer-service-guide.md"
+              >AI客服搭建指南：从0到1只需要3步</a
+            >
+          </h2>
+          <p>准备FAQ、搭建AI、部署上线。3步就能搭建一个AI客服。</p>
+          <div class="meta">2026-06-12</div>
+        </div>
+        <div class="post" data-cat="industry">
+          <span class="tag">商业</span>
+          <h2>
+            <a href="blog/12-ai-content-marketing.md"
+              >用AI做内容营销：小企业主的低成本获客方案</a
+            >
+          </h2>
+          <p>没钱投广告？用AI降低内容生产成本，通过内容获客。</p>
+          <div class="meta">2026-06-12</div>
+        </div>
+        <div class="post" data-cat="industry">
+          <span class="tag">电商</span>
+          <h2>
+            <a href="blog/13-ai-automation-for-ecommerce.md"
+              >电商自动化：用AI把重复工作交给机器</a
+            >
+          </h2>
+          <p>客服、商品描述、数据分析、营销文案，全部可以自动化。</p>
+          <div class="meta">2026-06-12</div>
+        </div>
+        <div class="post" data-cat="industry">
+          <span class="tag">企业</span>
+          <h2>
+            <a href="blog/14-ai-knowledge-base-for-teams.md"
+              >团队知识库搭建：让新员工不再问同样的问题</a
+            >
+          </h2>
+          <p>新员工入职问一堆老员工回答过100遍的问题？搭建AI知识库。</p>
+          <div class="meta">2026-06-12</div>
+        </div>
+        <div class="post" data-cat="industry">
+          <span class="tag">教育</span>
+          <h2>
+            <a href="blog/15-ai-for-teachers.md"
+              >老师必看：用AI省下80%的备课时间</a
+            >
+          </h2>
+          <p>备课、出题、批改、家长沟通，AI都能帮你省时间。</p>
+          <div class="meta">2026-06-12</div>
+        </div>
+        <div class="post" data-cat="industry">
+          <span class="tag">自由职业</span>
+          <h2>
+            <a href="blog/16-ai-for-freelancers.md"
+              >自由职业者必备：5个AI工具帮你接更多单</a
+            >
+          </h2>
+          <p>时间有限但想接更多单？AI帮你省下重复劳动的时间。</p>
+          <div class="meta">2026-06-12</div>
+        </div>
+        <div class="post" data-cat="guide">
+          <span class="tag">创业</span>
+          <h2>
+            <a href="blog/17-ai-startup-validation.md"
+              >想创业？先用AI验证你的想法，别急着投钱</a
+            >
+          </h2>
+          <p>花3个月做产品发现没人要？用AI花10分钟验证方向。</p>
+          <div class="meta">2026-06-12</div>
+        </div>
+        <div class="post" data-cat="industry">
+          <span class="tag">微商</span>
+          <h2>
+            <a href="blog/18-ai-for-wechat-business.md"
+              >微商必看：用AI把朋友圈文案写出花</a
+            >
+          </h2>
+          <p>每天发朋友圈但不知道写什么？AI帮你生成5种风格文案。</p>
+          <div class="meta">2026-06-12</div>
+        </div>
+        <div class="post" data-cat="industry">
+          <span class="tag">管理</span>
+          <h2>
+            <a href="blog/19-ai-data-analysis-for-managers.md"
+              >管理者必看：用AI做数据分析，不用学Excel</a
+            >
+          </h2>
+          <p>老板让你分析销售数据，你打开Excel发呆？AI帮你。</p>
+          <div class="meta">2026-06-12</div>
+        </div>
+        <div class="post" data-cat="industry">
+          <span class="tag">房产</span>
+          <h2>
+            <a href="blog/20-ai-for-real-estate.md"
+              >房产中介必看：用AI提升带看转化率</a
+            >
+          </h2>
+          <p>房源描述、客户问答、市场分析，AI帮你全搞定。</p>
+          <div class="meta">2026-06-12</div>
+        </div>
+        <div class="post" data-cat="industry">
+          <span class="tag">健身</span>
+          <h2>
+            <a href="blog/21-ai-for-fitness-coaches.md"
+              >健身教练必看：用AI自动出训练计划</a
+            >
+          </h2>
+          <p>每个学员定制训练计划花1-2小时？AI帮你10分钟搞定。</p>
+          <div class="meta">2026-06-12</div>
+        </div>
+        <div class="post" data-cat="industry">
+          <span class="tag">餐饮</span>
+          <h2>
+            <a href="blog/22-ai-for-restaurants.md"
+              >餐厅老板必看：用AI自动回复大众点评差评</a
+            >
+          </h2>
+          <p>差评不知道怎么回复？AI生成3种风格回复。</p>
+          <div class="meta">2026-06-12</div>
+        </div>
+        <div class="post" data-cat="guide">
+          <span class="tag">技巧</span>
+          <h2>
+            <a href="blog/23-ai-prompt-engineering.md"
+              >提示词工程入门：让AI输出更好结果的5个技巧</a
+            >
+          </h2>
+          <p>同样的AI，不同的提示词，输出结果天差地别。</p>
+          <div class="meta">2026-06-12</div>
+        </div>
+        <div class="post" data-cat="think">
+          <span class="tag">商业</span>
+          <h2>
+            <a href="blog/24-ai-cost-comparison.md"
+              >AI工具成本对比：自己做 vs 买现成的 vs 找人定制</a
+            >
+          </h2>
+          <p>三种方式，哪种最适合你？</p>
+          <div class="meta">2026-06-12</div>
+        </div>
+        <div class="post" data-cat="industry">
+          <span class="tag">培训</span>
+          <h2>
+            <a href="blog/25-ai-for-education-training.md"
+              >培训机构必看：用AI提升学员续费率</a
+            >
+          </h2>
+          <p>续费率低？AI帮你量化学习效果，提升家长信任。</p>
+          <div class="meta">2026-06-12</div>
+        </div>
+        <div class="post" data-cat="industry">
+          <span class="tag">美容</span>
+          <h2>
+            <a href="blog/26-ai-for-beauty-salons.md"
+              >美容院老板必看：用AI自动回复客户预约</a
+            >
+          </h2>
+          <p>客户微信预约每次手动确认？AI自动搞定。</p>
+          <div class="meta">2026-06-12</div>
+        </div>
+        <div class="post" data-cat="industry">
+          <span class="tag">法律</span>
+          <h2>
+            <a href="blog/27-ai-for-lawyers.md"
+              >律师必看：用AI自动生成法律文书初稿</a
+            >
+          </h2>
+          <p>写合同、起诉状每份2-3小时？AI帮你30分钟出初稿。</p>
+          <div class="meta">2026-06-12</div>
+        </div>
+        <div class="post" data-cat="industry">
+          <span class="tag">财务</span>
+          <h2>
+            <a href="blog/28-ai-for-accountants.md"
+              >会计必看：用AI自动生成财务报表分析</a
+            >
+          </h2>
+          <p>每月做报表花3天？AI帮你1天搞定。</p>
+          <div class="meta">2026-06-12</div>
+        </div>
+        <div class="post" data-cat="industry">
+          <span class="tag">HR</span>
+          <h2>
+            <a href="blog/29-ai-for-hr.md"
+              >HR必看：用AI自动筛选简历和生成面试问题</a
+            >
+          </h2>
+          <p>200份简历筛2天？AI帮你2小时搞定。</p>
+          <div class="meta">2026-06-12</div>
+        </div>
+        <div class="post" data-cat="think">
+          <span class="tag">认知</span>
+          <h2>
+            <a href="blog/30-ai-future-of-work.md"
+              >AI不会取代你，但会用AI的人会取代你</a
+            >
+          </h2>
+          <p>会用AI的人，效率是不用AI的人的3-5倍。</p>
+          <div class="meta">2026-06-12</div>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <p><a href="index.html">← 返回首页</a> | © 2026 AI工作室</p>
+    </footer>
+
+    <script>
+      function filterPosts(cat) {
+        document
+          .querySelectorAll(".filter button")
+          .forEach((b) => b.classList.remove("active"));
+        event.target.classList.add("active");
+        document.querySelectorAll(".post").forEach((p) => {
+          if (cat === "all" || p.dataset.cat === cat) {
+            p.style.display = "block";
+          } else {
+            p.style.display = "none";
+          }
+        });
+      }
+    </script>
+  </body>
+</html>

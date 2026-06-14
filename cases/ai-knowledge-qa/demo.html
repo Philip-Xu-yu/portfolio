@@ -1,0 +1,305 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI知识库问答助手 — 在线演示</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        font-family: system-ui, sans-serif;
+        background: #0a0a0a;
+        color: #e5e5e5;
+        min-height: 100vh;
+      }
+      .header {
+        text-align: center;
+        padding: 3rem 2rem 2rem;
+      }
+      .header h1 {
+        font-size: 2rem;
+        margin-bottom: 0.5rem;
+      }
+      .header p {
+        color: #888;
+      }
+      .container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 0 2rem 3rem;
+      }
+      .section {
+        background: #141414;
+        border: 1px solid #222;
+        border-radius: 12px;
+        padding: 1.5rem;
+        margin-bottom: 1.5rem;
+      }
+      .section h2 {
+        font-size: 1.2rem;
+        margin-bottom: 1rem;
+      }
+      .note {
+        background: #1a1a2e;
+        border: 1px solid #2a2a4e;
+        border-radius: 8px;
+        padding: 1rem;
+        margin-bottom: 1.5rem;
+        font-size: 0.9rem;
+        color: #888;
+      }
+      .note strong {
+        color: #3b82f6;
+      }
+      .demo-input {
+        background: #1a1a2e;
+        border: 1px dashed #333;
+        border-radius: 8px;
+        padding: 1rem;
+        margin-bottom: 1rem;
+      }
+      .demo-input h3 {
+        font-size: 1rem;
+        margin-bottom: 0.5rem;
+        color: #3b82f6;
+      }
+      .demo-input pre {
+        white-space: pre-wrap;
+        line-height: 1.6;
+        font-size: 0.9rem;
+      }
+      .copy-btn {
+        padding: 0.4rem 1rem;
+        background: #333;
+        color: #e5e5e5;
+        border: none;
+        border-radius: 8px;
+        font-size: 0.85rem;
+        cursor: pointer;
+        margin-top: 0.5rem;
+      }
+      .copy-btn:hover {
+        background: #444;
+      }
+      footer {
+        text-align: center;
+        padding: 2rem;
+        color: #555;
+        font-size: 0.85rem;
+        border-top: 1px solid #222;
+      }
+      footer a {
+        color: #3b82f6;
+        text-decoration: none;
+      }
+      .flow {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+        margin: 2rem 0;
+        flex-wrap: wrap;
+      }
+      .flow-step {
+        background: #1a1a2e;
+        border: 1px solid #2a2a4e;
+        border-radius: 8px;
+        padding: 1rem 1.5rem;
+        text-align: center;
+      }
+      .flow-step .num {
+        font-size: 1.5rem;
+        font-weight: 800;
+        color: #3b82f6;
+      }
+      .flow-step .label {
+        font-size: 0.85rem;
+        color: #888;
+        margin-top: 0.3rem;
+      }
+      .flow-arrow {
+        display: flex;
+        align-items: center;
+        color: #555;
+        font-size: 1.5rem;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="header">
+      <h1>📚 AI知识库问答助手</h1>
+      <p>在线演示版 — 体验基于文档的智能问答</p>
+    </div>
+
+    <div class="container">
+      <div class="note">
+        <strong>📌 演示说明：</strong
+        >这是一个静态演示页，展示工具的核心功能和输出效果。
+        完整版需要部署后端服务（FastAPI + OpenAI API）。 如需定制部署，请<a
+          href="../../index.html#contact"
+          style="color: #3b82f6"
+          >联系我</a
+        >。
+      </div>
+
+      <div class="flow">
+        <div class="flow-step">
+          <div class="num">1</div>
+          <div class="label">上传文档</div>
+        </div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step">
+          <div class="num">2</div>
+          <div class="label">自动分片</div>
+        </div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step">
+          <div class="num">3</div>
+          <div class="label">建立知识库</div>
+        </div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step">
+          <div class="num">4</div>
+          <div class="label">智能问答</div>
+        </div>
+      </div>
+
+      <div class="section">
+        <h2>📤 示例：上传产品手册</h2>
+        <div class="demo-input">
+          <h3>上传内容</h3>
+          <pre>
+产品名称：智能客服系统V2.0
+
+功能说明：
+1. 自动回复：支持24小时自动回复客户常见问题
+2. 多轮对话：支持上下文理解，多轮对话不丢失记忆
+3. 知识库管理：支持上传产品文档、FAQ等建立知识库
+4. 数据统计：提供对话量、满意度、响应时间等数据统计
+5. 多渠道接入：支持微信、网页、APP等多渠道接入
+
+价格方案：
+- 基础版：¥299/月，支持1000条对话/月
+- 专业版：¥599/月，支持5000条对话/月
+- 企业版：¥999/月，支持无限对话
+
+技术支持：
+- 工作日9:00-18:00在线客服
+- 提供7天免费试用
+- 提供一对一部署指导
+
+常见问题：
+Q: 支持哪些平台？
+A: 支持微信公众号、企业微信、网页、APP、抖音等主流平台。
+
+Q: 如何导入知识库？
+A: 支持上传PDF、Word、TXT、Markdown等格式，系统自动解析。
+
+Q: 数据安全如何保障？
+A: 采用银行级加密，支持私有化部署，数据完全自主可控。</pre
+          >
+        </div>
+      </div>
+
+      <div class="section">
+        <h2>❓ 示例问答</h2>
+        <div class="demo-input">
+          <h3>问题1</h3>
+          <pre>问：这个系统支持哪些平台？</pre>
+        </div>
+        <div class="demo-input">
+          <h3>AI回答</h3>
+          <pre>
+📖 基于文档的回答：
+
+根据产品手册，智能客服系统V2.0支持以下平台：
+- 微信公众号
+- 企业微信
+- 网页
+- APP
+- 抖音
+等主流平台。
+
+📄 引用来源：产品手册 - 常见问题部分</pre
+          >
+        </div>
+        <button class="copy-btn" onclick="copyText(this)">复制结果</button>
+
+        <div class="demo-input" style="margin-top: 1rem">
+          <h3>问题2</h3>
+          <pre>问：专业版多少钱？包含什么？</pre>
+        </div>
+        <div class="demo-input">
+          <h3>AI回答</h3>
+          <pre>
+📖 基于文档的回答：
+
+专业版价格为 ¥599/月，包含：
+- 支持5000条对话/月
+- 自动回复功能
+- 多轮对话支持
+- 知识库管理
+- 数据统计
+- 多渠道接入
+
+📄 引用来源：产品手册 - 价格方案部分</pre
+          >
+        </div>
+        <button class="copy-btn" onclick="copyText(this)">复制结果</button>
+
+        <div class="demo-input" style="margin-top: 1rem">
+          <h3>问题3（超出文档范围）</h3>
+          <pre>问：能否对接CRM系统？</pre>
+        </div>
+        <div class="demo-input">
+          <h3>AI回答</h3>
+          <pre>
+📖 基于文档的回答：
+
+抱歉，在当前上传的产品手册中，没有找到关于对接CRM系统的相关信息。
+
+建议您联系技术支持（工作日9:00-18:00在线客服）咨询此功能。
+
+📄 引用来源：未在文档中找到相关内容</pre
+          >
+        </div>
+        <button class="copy-btn" onclick="copyText(this)">复制结果</button>
+      </div>
+
+      <div class="section" style="text-align: center">
+        <h2>想要完整可部署版本？</h2>
+        <p style="color: #888; margin: 1rem 0">
+          包含后端API、向量数据库、多文档支持
+        </p>
+        <a
+          href="../../index.html#contact"
+          style="
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            background: #3b82f6;
+            color: white;
+            border-radius: 8px;
+            text-decoration: none;
+          "
+          >联系我定制</a
+        >
+      </div>
+    </div>
+
+    <footer>
+      <p><a href="../../index.html">← 返回作品集</a> | © 2026 AI工作室</p>
+    </footer>
+
+    <script>
+      function copyText(btn) {
+        const pre = btn.previousElementSibling.querySelector("pre");
+        navigator.clipboard.writeText(pre.textContent);
+        btn.textContent = "已复制 ✓";
+        setTimeout(() => (btn.textContent = "复制结果"), 2000);
+      }
+    </script>
+  </body>
+</html>

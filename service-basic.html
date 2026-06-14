@@ -1,0 +1,281 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>基础版 — AI工具定制 ¥99 | AI工作室</title>
+    <meta
+      name="description"
+      content="99元定制一个专属AI工具，1-2天交付，包部署包售后"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        font-family: system-ui, sans-serif;
+        background: #0a0a0a;
+        color: #e5e5e5;
+      }
+      nav {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        background: rgba(10, 10, 10, 0.9);
+        backdrop-filter: blur(10px);
+        border-bottom: 1px solid #222;
+        z-index: 100;
+        padding: 0 2rem;
+      }
+      nav .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 60px;
+      }
+      nav .logo {
+        font-size: 1.2rem;
+        font-weight: 700;
+      }
+      nav .logo span {
+        color: #3b82f6;
+      }
+      nav a {
+        color: #888;
+        text-decoration: none;
+        font-size: 0.9rem;
+        margin-left: 2rem;
+      }
+      nav a:hover {
+        color: #e5e5e5;
+      }
+      .container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 6rem 2rem 3rem;
+      }
+      .badge {
+        display: inline-block;
+        padding: 0.3rem 1rem;
+        background: rgba(59, 130, 246, 0.1);
+        color: #3b82f6;
+        border-radius: 100px;
+        font-size: 0.85rem;
+        margin-bottom: 1rem;
+      }
+      h1 {
+        font-size: 2.5rem;
+        font-weight: 800;
+        margin-bottom: 0.5rem;
+      }
+      .price {
+        font-size: 3rem;
+        font-weight: 800;
+        color: #3b82f6;
+        margin: 1rem 0;
+      }
+      .price span {
+        font-size: 1rem;
+        color: #888;
+        font-weight: 400;
+      }
+      .desc {
+        color: #888;
+        font-size: 1.1rem;
+        margin-bottom: 2rem;
+      }
+      .section {
+        background: #141414;
+        border: 1px solid #222;
+        border-radius: 12px;
+        padding: 1.5rem;
+        margin-bottom: 1.5rem;
+      }
+      .section h2 {
+        font-size: 1.2rem;
+        margin-bottom: 1rem;
+      }
+      .section ul {
+        list-style: none;
+      }
+      .section ul li {
+        padding: 0.6rem 0;
+        border-bottom: 1px solid #222;
+        font-size: 0.95rem;
+      }
+      .section ul li:last-child {
+        border-bottom: none;
+      }
+      .section ul li::before {
+        content: "✓ ";
+        color: #3b82f6;
+        font-weight: bold;
+      }
+      .btn {
+        display: inline-block;
+        padding: 1rem 2.5rem;
+        background: #3b82f6;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        font-size: 1.1rem;
+        cursor: pointer;
+        text-decoration: none;
+        margin-top: 1rem;
+      }
+      .btn:hover {
+        background: #2563eb;
+      }
+      .faq {
+        margin-top: 1rem;
+      }
+      .faq-item {
+        border-bottom: 1px solid #222;
+        padding: 1rem 0;
+      }
+      .faq-item h3 {
+        font-size: 1rem;
+        margin-bottom: 0.5rem;
+        cursor: pointer;
+      }
+      .faq-item p {
+        color: #888;
+        font-size: 0.9rem;
+      }
+      .cases {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 1rem;
+        margin-top: 1rem;
+      }
+      .case-card {
+        background: #1a1a1a;
+        border: 1px solid #333;
+        border-radius: 8px;
+        padding: 1rem;
+      }
+      .case-card h3 {
+        font-size: 0.95rem;
+        margin-bottom: 0.3rem;
+      }
+      .case-card p {
+        font-size: 0.8rem;
+        color: #888;
+      }
+      footer {
+        text-align: center;
+        padding: 2rem;
+        color: #555;
+        font-size: 0.85rem;
+        border-top: 1px solid #222;
+        margin-top: 3rem;
+      }
+      footer a {
+        color: #3b82f6;
+        text-decoration: none;
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <div class="container">
+        <div class="logo">AI<span>工作室</span></div>
+        <div>
+          <a href="index.html">首页</a>
+          <a href="service-basic.html">基础版</a>
+          <a href="service-standard.html">标准版</a>
+          <a href="service-premium.html">高级版</a>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container">
+      <span class="badge">基础版</span>
+      <h1>AI工具定制</h1>
+      <div class="price">¥99 <span>/次</span></div>
+      <p class="desc">
+        帮你定制一个专属AI工具，解决一个具体问题。1-2天交付，包部署包售后。
+      </p>
+
+      <div class="section">
+        <h2>包含内容</h2>
+        <ul>
+          <li>AI聊天机器人（基于FAQ自动回复）</li>
+          <li>AI自动化脚本（数据处理、内容生成）</li>
+          <li>AI文案生成器（特定场景）</li>
+          <li>部署到可访问的URL</li>
+          <li>使用文档（README）</li>
+          <li>7天售后支持</li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <h2>适合谁</h2>
+        <ul>
+          <li>电商小卖家 — 需要FAQ自动回复</li>
+          <li>自媒体人 — 需要内容生成工具</li>
+          <li>个体户 — 有一个重复性任务想自动化</li>
+          <li>想试试AI但预算有限的人</li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <h2>交付流程</h2>
+        <ul>
+          <li>Step 1：沟通需求（30分钟）</li>
+          <li>Step 2：开发（1-2天）</li>
+          <li>Step 3：部署+交付</li>
+          <li>Step 4：7天售后支持</li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <h2>案例</h2>
+        <div class="cases">
+          <div class="case-card">
+            <h3>电商FAQ机器人</h3>
+            <p>自动回复发货、退款、优惠券等常见问题</p>
+          </div>
+          <div class="case-card">
+            <h3>朋友圈文案生成器</h3>
+            <p>输入产品信息，自动生成5种风格文案</p>
+          </div>
+          <div class="case-card">
+            <h3>数据处理脚本</h3>
+            <p>自动整理Excel、生成报表、批量处理</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <h2>常见问题</h2>
+        <div class="faq">
+          <div class="faq-item">
+            <h3>和ChatGPT有什么区别？</h3>
+            <p>
+              ChatGPT是通用工具，需要每次手动输入。我帮你做的是一个专属工具，已经把你的业务知识训练进去了，打开就能用。
+            </p>
+          </div>
+          <div class="faq-item">
+            <h3>不满意可以退款吗？</h3>
+            <p>可以。如果不满意，不收钱。</p>
+          </div>
+          <div class="faq-item">
+            <h3>交付后可以修改吗？</h3>
+            <p>7天内免费修改。超出7天按小时收费（100元/小时）。</p>
+          </div>
+        </div>
+      </div>
+
+      <a href="index.html#contact" class="btn">立即咨询</a>
+    </div>
+
+    <footer>
+      <p><a href="index.html">← 返回首页</a> | © 2026 AI工作室</p>
+    </footer>
+  </body>
+</html>

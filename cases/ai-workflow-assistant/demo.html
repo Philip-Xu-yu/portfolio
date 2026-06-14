@@ -1,0 +1,339 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI自动化工作流助手 — 在线演示</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        font-family: system-ui, sans-serif;
+        background: #0a0a0a;
+        color: #e5e5e5;
+        min-height: 100vh;
+      }
+      .header {
+        text-align: center;
+        padding: 3rem 2rem 2rem;
+      }
+      .header h1 {
+        font-size: 2rem;
+        margin-bottom: 0.5rem;
+      }
+      .header p {
+        color: #888;
+      }
+      .container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 0 2rem 3rem;
+      }
+      .section {
+        background: #141414;
+        border: 1px solid #222;
+        border-radius: 12px;
+        padding: 1.5rem;
+        margin-bottom: 1.5rem;
+      }
+      .section h2 {
+        font-size: 1.2rem;
+        margin-bottom: 1rem;
+      }
+      .note {
+        background: #1a1a2e;
+        border: 1px solid #2a2a4e;
+        border-radius: 8px;
+        padding: 1rem;
+        margin-bottom: 1.5rem;
+        font-size: 0.9rem;
+        color: #888;
+      }
+      .note strong {
+        color: #3b82f6;
+      }
+      .demo-input {
+        background: #1a1a2e;
+        border: 1px dashed #333;
+        border-radius: 8px;
+        padding: 1rem;
+        margin-bottom: 1rem;
+      }
+      .demo-input h3 {
+        font-size: 1rem;
+        margin-bottom: 0.5rem;
+        color: #3b82f6;
+      }
+      .demo-input pre {
+        white-space: pre-wrap;
+        line-height: 1.6;
+        font-size: 0.9rem;
+      }
+      .copy-btn {
+        padding: 0.4rem 1rem;
+        background: #333;
+        color: #e5e5e5;
+        border: none;
+        border-radius: 8px;
+        font-size: 0.85rem;
+        cursor: pointer;
+        margin-top: 0.5rem;
+      }
+      .copy-btn:hover {
+        background: #444;
+      }
+      footer {
+        text-align: center;
+        padding: 2rem;
+        color: #555;
+        font-size: 0.85rem;
+        border-top: 1px solid #222;
+      }
+      footer a {
+        color: #3b82f6;
+        text-decoration: none;
+      }
+      .workflow {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        margin: 1.5rem 0;
+      }
+      .wf-node {
+        background: #1a1a2e;
+        border: 1px solid #2a2a4e;
+        border-radius: 8px;
+        padding: 1rem 1.5rem;
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+      }
+      .wf-node .icon {
+        font-size: 1.5rem;
+      }
+      .wf-node .info {
+        flex: 1;
+      }
+      .wf-node .info .name {
+        font-weight: 600;
+      }
+      .wf-node .info .desc {
+        font-size: 0.85rem;
+        color: #888;
+      }
+      .wf-arrow {
+        text-align: center;
+        color: #555;
+        font-size: 1.2rem;
+      }
+      .templates {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 1rem;
+        margin: 1rem 0;
+      }
+      .template-card {
+        background: #1a1a2e;
+        border: 1px solid #2a2a4e;
+        border-radius: 8px;
+        padding: 1rem;
+        text-align: center;
+      }
+      .template-card .emoji {
+        font-size: 2rem;
+        margin-bottom: 0.5rem;
+      }
+      .template-card .name {
+        font-weight: 600;
+        margin-bottom: 0.3rem;
+      }
+      .template-card .desc {
+        font-size: 0.8rem;
+        color: #888;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="header">
+      <h1>⚡ AI自动化工作流助手</h1>
+      <p>在线演示版 — 体验AI驱动的自动化工作流</p>
+    </div>
+
+    <div class="container">
+      <div class="note">
+        <strong>📌 演示说明：</strong
+        >这是一个静态演示页，展示工具的核心功能和输出效果。
+        完整版需要部署后端服务（FastAPI + 定时任务引擎）。 如需定制部署，请<a
+          href="../../index.html#contact"
+          style="color: #3b82f6"
+          >联系我</a
+        >。
+      </div>
+
+      <div class="section">
+        <h2>🔄 核心功能：可视化工作流</h2>
+        <p style="color: #888; margin-bottom: 1rem; font-size: 0.9rem">
+          拖拽式编辑，零代码搭建自动化流程
+        </p>
+        <div class="workflow">
+          <div class="wf-node">
+            <div class="icon">⏰</div>
+            <div class="info">
+              <div class="name">触发器：每天早上9:00</div>
+              <div class="desc">定时触发 / Webhook触发 / 手动触发</div>
+            </div>
+          </div>
+          <div class="wf-arrow">↓</div>
+          <div class="wf-node">
+            <div class="icon">📥</div>
+            <div class="info">
+              <div class="name">数据采集：抓取热点话题</div>
+              <div class="desc">从微博/知乎/小红书抓取今日热点</div>
+            </div>
+          </div>
+          <div class="wf-arrow">↓</div>
+          <div class="wf-node">
+            <div class="icon">🤖</div>
+            <div class="info">
+              <div class="name">AI处理：生成10个选题</div>
+              <div class="desc">基于热点生成有爆款潜力的选题</div>
+            </div>
+          </div>
+          <div class="wf-arrow">↓</div>
+          <div class="wf-node">
+            <div class="icon">✍️</div>
+            <div class="info">
+              <div class="name">AI处理：生成完整文案</div>
+              <div class="desc">为每个选题生成小红书/抖音文案</div>
+            </div>
+          </div>
+          <div class="wf-arrow">↓</div>
+          <div class="wf-node">
+            <div class="icon">📤</div>
+            <div class="info">
+              <div class="name">输出：发送到飞书/邮箱</div>
+              <div class="desc">汇总结果发送，等待人工审核发布</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <h2>📋 预置模板</h2>
+        <div class="templates">
+          <div class="template-card">
+            <div class="emoji">📱</div>
+            <div class="name">自媒体内容助手</div>
+            <div class="desc">自动抓取热点→生成选题→生成文案→发送审核</div>
+          </div>
+          <div class="template-card">
+            <div class="emoji">💬</div>
+            <div class="name">客服自动回复</div>
+            <div class="desc">接收消息→AI判断意图→生成回复→自动发送</div>
+          </div>
+          <div class="template-card">
+            <div class="emoji">📊</div>
+            <div class="name">数据日报生成</div>
+            <div class="desc">定时拉取数据→AI分析→生成报告→发送团队</div>
+          </div>
+          <div class="template-card">
+            <div class="emoji">📧</div>
+            <div class="name">邮件自动分类</div>
+            <div class="desc">接收邮件→AI分类→标记优先级→自动回复</div>
+          </div>
+          <div class="template-card">
+            <div class="emoji">🛒</div>
+            <div class="name">商品描述生成</div>
+            <div class="desc">读取商品信息→AI生成描述→批量输出→上架</div>
+          </div>
+          <div class="template-card">
+            <div class="emoji">📝</div>
+            <div class="name">会议纪要自动化</div>
+            <div class="desc">录音转文字→AI提取要点→生成纪要→发送参会人</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <h2>📊 示例输出：自媒体内容助手</h2>
+        <div class="demo-input">
+          <h3>工作流执行结果（每天早上9:30自动发送）</h3>
+          <pre>
+📱 今日自媒体选题报告
+━━━━━━━━━━━━━━━━━━
+⏰ 生成时间：2026-06-12 09:30
+📊 抓取热点：15条 → 筛选：8条 → 生成选题：10个
+
+🔥 今日热点
+1. Claude 4发布，编程能力大幅提升
+2. 某明星被曝使用AI换脸
+3. 多家大厂裁员，AI岗位逆势增长
+4. 教育部发布AI教育指导意见
+5. 某AI创业公司获亿元融资
+
+💡 推荐选题TOP 5
+
+选题1：Claude 4实测｜程序员用它写代码，效率翻了3倍
+热度：⭐⭐⭐⭐⭐ | 平台：小红书
+角度：实操测评，对比GPT-4
+
+选题2：AI换脸泛滥，普通人如何保护自己的脸？
+热度：⭐⭐⭐⭐⭐ | 平台：抖音
+角度：科普+防范指南
+
+选题3：35岁被裁后，我靠AI找到了新工作
+热度：⭐⭐⭐⭐ | 平台：小红书
+角度：个人故事+AI技能提升
+
+选题4：教育部发话了！AI教育要从娃娃抓起？
+热度：⭐⭐⭐⭐ | 平台：公众号
+角度：政策解读+家长指南
+
+选题5：普通人如何抓住AI创业机会？
+热度：⭐⭐⭐ | 平台：小红书
+角度：趋势分析+行动建议
+
+━━━━━━━━━━━━━━━━━━
+💡 下一步：回复"生成文案 1"为选题1生成完整文案</pre
+          >
+        </div>
+        <button class="copy-btn" onclick="copyText(this)">复制结果</button>
+      </div>
+
+      <div class="section" style="text-align: center">
+        <h2>想要完整可部署版本？</h2>
+        <p style="color: #888; margin: 1rem 0">
+          包含可视化编辑器、定时引擎、多渠道输出
+        </p>
+        <a
+          href="../../index.html#contact"
+          style="
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            background: #3b82f6;
+            color: white;
+            border-radius: 8px;
+            text-decoration: none;
+          "
+          >联系我定制</a
+        >
+      </div>
+    </div>
+
+    <footer>
+      <p><a href="../../index.html">← 返回作品集</a> | © 2026 AI工作室</p>
+    </footer>
+
+    <script>
+      function copyText(btn) {
+        const pre = btn.previousElementSibling.querySelector("pre");
+        navigator.clipboard.writeText(pre.textContent);
+        btn.textContent = "已复制 ✓";
+        setTimeout(() => (btn.textContent = "复制结果"), 2000);
+      }
+    </script>
+  </body>
+</html>

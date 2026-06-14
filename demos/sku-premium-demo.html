@@ -1,0 +1,400 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Demo：AI数据分析仪表盘 — 高级版 ¥499</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        font-family: system-ui, sans-serif;
+        background: #0a0a0a;
+        color: #e5e5e5;
+        min-height: 100vh;
+      }
+      .container {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 2rem;
+      }
+      .header {
+        text-align: center;
+        padding: 2rem 0;
+      }
+      .header h1 {
+        font-size: 1.8rem;
+        margin-bottom: 0.5rem;
+      }
+      .header p {
+        color: #888;
+      }
+      .badge {
+        display: inline-block;
+        padding: 0.3rem 1rem;
+        background: rgba(168, 85, 247, 0.2);
+        color: #a855f7;
+        border-radius: 100px;
+        font-size: 0.85rem;
+        margin-bottom: 1rem;
+        font-weight: 600;
+      }
+      .stats {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 1rem;
+        margin-bottom: 2rem;
+      }
+      .stat {
+        background: #141414;
+        border: 1px solid #222;
+        border-radius: 12px;
+        padding: 1.2rem;
+        text-align: center;
+      }
+      .stat .num {
+        font-size: 1.8rem;
+        font-weight: 800;
+      }
+      .stat .label {
+        font-size: 0.8rem;
+        color: #888;
+        margin-top: 0.3rem;
+      }
+      .stat.up .num {
+        color: #22c55e;
+      }
+      .stat.down .num {
+        color: #ef4444;
+      }
+      .charts {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+        margin-bottom: 2rem;
+      }
+      .chart {
+        background: #141414;
+        border: 1px solid #222;
+        border-radius: 12px;
+        padding: 1.5rem;
+      }
+      .chart h3 {
+        font-size: 1rem;
+        margin-bottom: 1rem;
+      }
+      .bar-chart {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+      .bar-row {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+      .bar-row .label {
+        width: 40px;
+        font-size: 0.8rem;
+        color: #888;
+      }
+      .bar-row .bar {
+        flex: 1;
+        height: 20px;
+        background: #222;
+        border-radius: 4px;
+        overflow: hidden;
+      }
+      .bar-row .bar .fill {
+        height: 100%;
+        border-radius: 4px;
+      }
+      .bar-row .val {
+        width: 50px;
+        text-align: right;
+        font-size: 0.85rem;
+      }
+      .pie {
+        display: flex;
+        align-items: center;
+        gap: 2rem;
+      }
+      .pie-visual {
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        background: conic-gradient(
+          #3b82f6 0% 45%,
+          #22c55e 45% 70%,
+          #f59e0b 70% 85%,
+          #ef4444 85% 100%
+        );
+      }
+      .pie-legend {
+        display: flex;
+        flex-direction: column;
+        gap: 0.3rem;
+      }
+      .pie-legend .item {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-size: 0.85rem;
+      }
+      .pie-legend .dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+      }
+      .ai-insight {
+        background: #141414;
+        border: 1px solid #222;
+        border-radius: 12px;
+        padding: 1.5rem;
+        margin-bottom: 2rem;
+      }
+      .ai-insight h3 {
+        margin-bottom: 1rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+      .ai-insight .insight {
+        background: #1a1a1a;
+        border: 1px solid #333;
+        border-radius: 8px;
+        padding: 1rem;
+        margin-bottom: 0.5rem;
+        font-size: 0.9rem;
+        line-height: 1.6;
+      }
+      .ai-insight .insight .tag {
+        display: inline-block;
+        padding: 0.1rem 0.5rem;
+        border-radius: 4px;
+        font-size: 0.75rem;
+        margin-right: 0.3rem;
+      }
+      .ai-insight .insight .tag.warn {
+        background: rgba(239, 68, 68, 0.2);
+        color: #ef4444;
+      }
+      .ai-insight .insight .tag.info {
+        background: rgba(59, 130, 246, 0.2);
+        color: #3b82f6;
+      }
+      .ai-insight .insight .tag.good {
+        background: rgba(34, 197, 94, 0.2);
+        color: #22c55e;
+      }
+      .info {
+        background: #141414;
+        border: 1px solid #222;
+        border-radius: 12px;
+        padding: 1.5rem;
+        margin-bottom: 2rem;
+      }
+      .info h2 {
+        font-size: 1.1rem;
+        margin-bottom: 1rem;
+      }
+      .info ul {
+        list-style: none;
+      }
+      .info ul li {
+        padding: 0.5rem 0;
+        border-bottom: 1px solid #222;
+        font-size: 0.9rem;
+      }
+      .info ul li:last-child {
+        border-bottom: none;
+      }
+      .info ul li::before {
+        content: "✓ ";
+        color: #a855f7;
+      }
+      .cta {
+        text-align: center;
+        padding: 2rem 0;
+      }
+      .cta a {
+        display: inline-block;
+        padding: 1rem 2rem;
+        background: #a855f7;
+        color: white;
+        border-radius: 8px;
+        text-decoration: none;
+      }
+      footer {
+        text-align: center;
+        padding: 2rem;
+        color: #555;
+        font-size: 0.85rem;
+        border-top: 1px solid #222;
+      }
+      footer a {
+        color: #a855f7;
+        text-decoration: none;
+      }
+      @media (max-width: 768px) {
+        .stats {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .charts {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <span class="badge">高级版 ¥499 演示</span>
+        <h1>AI数据分析仪表盘</h1>
+        <p>上传数据，AI自动分析，生成可视化报告和洞察</p>
+      </div>
+
+      <div class="stats">
+        <div class="stat up">
+          <div class="num">¥128k</div>
+          <div class="label">本月营收 ↑12%</div>
+        </div>
+        <div class="stat up">
+          <div class="num">1,847</div>
+          <div class="label">新客户 ↑23%</div>
+        </div>
+        <div class="stat down">
+          <div class="num">3.2%</div>
+          <div class="label">退货率 ↑0.5%</div>
+        </div>
+        <div class="stat up">
+          <div class="num">¥69</div>
+          <div class="label">客单价 ↑8%</div>
+        </div>
+      </div>
+
+      <div class="charts">
+        <div class="chart">
+          <h3>月度营收趋势</h3>
+          <div class="bar-chart">
+            <div class="bar-row">
+              <span class="label">1月</span>
+              <div class="bar">
+                <div class="fill" style="width: 60%; background: #3b82f6"></div>
+              </div>
+              <span class="val">¥76k</span>
+            </div>
+            <div class="bar-row">
+              <span class="label">2月</span>
+              <div class="bar">
+                <div class="fill" style="width: 55%; background: #3b82f6"></div>
+              </div>
+              <span class="val">¥70k</span>
+            </div>
+            <div class="bar-row">
+              <span class="label">3月</span>
+              <div class="bar">
+                <div class="fill" style="width: 70%; background: #3b82f6"></div>
+              </div>
+              <span class="val">¥89k</span>
+            </div>
+            <div class="bar-row">
+              <span class="label">4月</span>
+              <div class="bar">
+                <div class="fill" style="width: 75%; background: #3b82f6"></div>
+              </div>
+              <span class="val">¥95k</span>
+            </div>
+            <div class="bar-row">
+              <span class="label">5月</span>
+              <div class="bar">
+                <div class="fill" style="width: 85%; background: #3b82f6"></div>
+              </div>
+              <span class="val">¥108k</span>
+            </div>
+            <div class="bar-row">
+              <span class="label">6月</span>
+              <div class="bar">
+                <div
+                  class="fill"
+                  style="width: 100%; background: #22c55e"
+                ></div>
+              </div>
+              <span class="val">¥128k</span>
+            </div>
+          </div>
+        </div>
+        <div class="chart">
+          <h3>客户来源分布</h3>
+          <div class="pie">
+            <div class="pie-visual"></div>
+            <div class="pie-legend">
+              <div class="item">
+                <span class="dot" style="background: #3b82f6"></span>小红书 45%
+              </div>
+              <div class="item">
+                <span class="dot" style="background: #22c55e"></span>抖音 25%
+              </div>
+              <div class="item">
+                <span class="dot" style="background: #f59e0b"></span>闲鱼 15%
+              </div>
+              <div class="item">
+                <span class="dot" style="background: #ef4444"></span>其他 15%
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="ai-insight">
+        <h3>🤖 AI洞察</h3>
+        <div class="insight">
+          <span class="tag warn">预警</span>
+          退货率本月上升0.5%，主要集中在"连衣裙"品类。建议检查该品类尺码标注是否准确，或增加尺码推荐功能。
+        </div>
+        <div class="insight">
+          <span class="tag good">增长</span>
+          小红书渠道带来的客户转化率最高（8.2%），建议增加小红书投放预算，ROI预计可达1:4.5。
+        </div>
+        <div class="insight">
+          <span class="tag info">建议</span>
+          周末订单量比工作日高35%，建议在周五晚8点-10点集中发布内容，抓住周末消费高峰。
+        </div>
+      </div>
+
+      <div class="info">
+        <h2>这个Demo展示了什么</h2>
+        <ul>
+          <li>数据可视化仪表盘</li>
+          <li>AI自动分析数据趋势</li>
+          <li>AI生成洞察和建议</li>
+          <li>异常预警（退货率上升）</li>
+          <li>机会发现（渠道优化建议）</li>
+          <li>源码交付，可二次开发</li>
+        </ul>
+      </div>
+
+      <div class="info">
+        <h2>定制你自己的数据分析系统</h2>
+        <ul>
+          <li>对接你的数据源（Excel/数据库/API）</li>
+          <li>定制仪表盘指标</li>
+          <li>3-5天交付</li>
+          <li>源码交付 + 1小时培训</li>
+          <li>30天售后支持</li>
+        </ul>
+      </div>
+
+      <div class="cta">
+        <a href="../index.html#contact">定制你自己的数据分析系统 → ¥499</a>
+      </div>
+    </div>
+
+    <footer>
+      <p><a href="../index.html">← 返回作品集</a> | © 2026 AI工作室</p>
+    </footer>
+  </body>
+</html>

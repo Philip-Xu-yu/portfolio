@@ -1,0 +1,413 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI商业机会分析Agent — 在线演示</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        font-family: system-ui, sans-serif;
+        background: #0a0a0a;
+        color: #e5e5e5;
+        min-height: 100vh;
+      }
+      .header {
+        text-align: center;
+        padding: 3rem 2rem 2rem;
+      }
+      .header h1 {
+        font-size: 2rem;
+        margin-bottom: 0.5rem;
+      }
+      .header p {
+        color: #888;
+      }
+      .container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 0 2rem 3rem;
+      }
+      .section {
+        background: #141414;
+        border: 1px solid #222;
+        border-radius: 12px;
+        padding: 1.5rem;
+        margin-bottom: 1.5rem;
+      }
+      .section h2 {
+        font-size: 1.2rem;
+        margin-bottom: 1rem;
+      }
+      .note {
+        background: #1a1a2e;
+        border: 1px solid #2a2a4e;
+        border-radius: 8px;
+        padding: 1rem;
+        margin-bottom: 1.5rem;
+        font-size: 0.9rem;
+        color: #888;
+      }
+      .note strong {
+        color: #3b82f6;
+      }
+      .demo-input {
+        background: #1a1a2e;
+        border: 1px dashed #333;
+        border-radius: 8px;
+        padding: 1rem;
+        margin-bottom: 1rem;
+      }
+      .demo-input h3 {
+        font-size: 1rem;
+        margin-bottom: 0.5rem;
+        color: #3b82f6;
+      }
+      .demo-input pre {
+        white-space: pre-wrap;
+        line-height: 1.6;
+        font-size: 0.9rem;
+      }
+      .copy-btn {
+        padding: 0.4rem 1rem;
+        background: #333;
+        color: #e5e5e5;
+        border: none;
+        border-radius: 8px;
+        font-size: 0.85rem;
+        cursor: pointer;
+        margin-top: 0.5rem;
+      }
+      .copy-btn:hover {
+        background: #444;
+      }
+      footer {
+        text-align: center;
+        padding: 2rem;
+        color: #555;
+        font-size: 0.85rem;
+        border-top: 1px solid #222;
+      }
+      footer a {
+        color: #3b82f6;
+        text-decoration: none;
+      }
+      .score-bar {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        margin: 0.3rem 0;
+      }
+      .score-bar .label {
+        width: 80px;
+        font-size: 0.85rem;
+        color: #888;
+      }
+      .score-bar .bar {
+        flex: 1;
+        height: 8px;
+        background: #222;
+        border-radius: 4px;
+        overflow: hidden;
+      }
+      .score-bar .bar .fill {
+        height: 100%;
+        border-radius: 4px;
+      }
+      .score-bar .val {
+        width: 40px;
+        text-align: right;
+        font-size: 0.85rem;
+        font-weight: 600;
+      }
+      .canvas-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+        margin: 1rem 0;
+      }
+      .canvas-cell {
+        background: #1a1a2e;
+        border: 1px solid #2a2a4e;
+        border-radius: 8px;
+        padding: 1rem;
+      }
+      .canvas-cell h4 {
+        font-size: 0.9rem;
+        color: #3b82f6;
+        margin-bottom: 0.5rem;
+      }
+      .canvas-cell p {
+        font-size: 0.85rem;
+        color: #aaa;
+        line-height: 1.5;
+      }
+      .canvas-cell.full {
+        grid-column: 1 / -1;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="header">
+      <h1>🔍 AI商业机会分析Agent</h1>
+      <p>在线演示版 — 体验AI如何分析商业机会</p>
+    </div>
+
+    <div class="container">
+      <div class="note">
+        <strong>📌 演示说明：</strong
+        >这是一个静态演示页，展示工具的核心功能和输出效果。
+        完整版需要部署后端服务（FastAPI + OpenAI API）。 如需定制部署，请<a
+          href="../../index.html#contact"
+          style="color: #3b82f6"
+          >联系我</a
+        >。
+      </div>
+
+      <div class="section">
+        <h2>🔍 功能1：市场机会分析</h2>
+        <div class="demo-input">
+          <h3>示例输入</h3>
+          <pre>
+行业：AI教育
+目标用户：K12学生家长
+预算：10万元启动资金</pre
+          >
+        </div>
+        <div class="demo-input">
+          <h3>AI分析结果</h3>
+          <pre>
+📊 AI教育市场机会分析报告
+
+━━━━━━━━━━━━━━━━━━
+
+🎯 市场概况
+- 市场规模：预计2026年达800亿元
+- 增长率：年均35%+
+- 驱动因素：政策支持、家长焦虑、技术成熟
+
+👥 目标用户画像
+核心用户：25-40岁K12学生家长
+痛点：
+  1. 辅导作业力不从心（72%家长）
+  2. 不知道孩子薄弱点在哪（65%）
+  3. 请家教太贵（58%）
+  4. 担心孩子沉迷手机（81%）
+
+💡 机会点
+1. AI作业辅导：拍照搜题+AI讲解（竞争激烈）
+2. AI学情分析：诊断薄弱知识点（蓝海）
+3. AI学习规划：个性化学习路径（蓝海）
+4. AI口语陪练：英语口语练习（增长快）
+
+⚠️ 风险提示
+- 政策风险：教育部对AI进校园有严格规定
+- 获客成本：教育行业CAC高达200-500元
+- 竞争格局：好未来、猿辅导等巨头已入场
+
+📊 机会评分</pre
+          >
+        </div>
+        <div class="score-bar">
+          <div class="label">市场规模</div>
+          <div class="bar">
+            <div class="fill" style="width: 90%; background: #3b82f6"></div>
+          </div>
+          <div class="val">9/10</div>
+        </div>
+        <div class="score-bar">
+          <div class="label">竞争程度</div>
+          <div class="bar">
+            <div class="fill" style="width: 80%; background: #ef4444"></div>
+          </div>
+          <div class="val">8/10</div>
+        </div>
+        <div class="score-bar">
+          <div class="label">进入门槛</div>
+          <div class="bar">
+            <div class="fill" style="width: 60%; background: #f59e0b"></div>
+          </div>
+          <div class="val">6/10</div>
+        </div>
+        <div class="score-bar">
+          <div class="label">盈利潜力</div>
+          <div class="bar">
+            <div class="fill" style="width: 75%; background: #22c55e"></div>
+          </div>
+          <div class="val">7.5/10</div>
+        </div>
+        <div class="score-bar">
+          <div class="label">推荐指数</div>
+          <div class="bar">
+            <div class="fill" style="width: 70%; background: #8b5cf6"></div>
+          </div>
+          <div class="val">7/10</div>
+        </div>
+        <button class="copy-btn" onclick="copyText(this)">复制结果</button>
+      </div>
+
+      <div class="section">
+        <h2>🏆 功能2：竞品分析</h2>
+        <div class="demo-input">
+          <h3>示例输入</h3>
+          <pre>竞品：猿辅导、作业帮、学而思</pre>
+        </div>
+        <div class="demo-input">
+          <h3>AI分析结果</h3>
+          <pre>
+🏆 竞品对比分析
+
+━━━━━━━━━━━━━━━━━━
+
+| 维度 | 猿辅导 | 作业帮 | 学而思 |
+|------|--------|--------|--------|
+| 核心功能 | 在线辅导 | 拍照搜题 | 课程体系 |
+| AI程度 | ⭐⭐⭐ | ⭐⭐⭐⭐ | ⭐⭐ |
+| 用户规模 | 4亿+ | 8亿+ | 1亿+ |
+| 营收模式 | 课程付费 | 广告+会员 | 课程付费 |
+| 优势 | 师资强 | 用户多 | 品牌强 |
+| 劣势 | 成本高 | 变现难 | 转型慢 |
+
+🔍 差异化机会
+1. 猿辅导强在师资，但AI化程度不够 → 用AI降低师资成本
+2. 作业帮用户多，但变现难 → 做高价值AI功能收费
+3. 学而思品牌强，但转型慢 → 做轻量级AI学习工具
+
+💡 建议切入点
+不要做"又一个在线辅导平台"
+而是做"AI学情诊断+个性化学习规划"工具
+帮家长解决"不知道孩子哪里不会"的核心痛点</pre
+          >
+        </div>
+        <button class="copy-btn" onclick="copyText(this)">复制结果</button>
+      </div>
+
+      <div class="section">
+        <h2>📊 功能3：商业模式画布</h2>
+        <div class="demo-input">
+          <h3>AI生成的商业模式画布</h3>
+          <div class="canvas-grid">
+            <div class="canvas-cell">
+              <h4>🤝 关键合作伙伴</h4>
+              <p>内容供应商（题库）、学校/培训机构、支付平台、云服务商</p>
+            </div>
+            <div class="canvas-cell">
+              <h4>🔑 关键活动</h4>
+              <p>AI模型训练、内容生产、用户运营、获客推广</p>
+            </div>
+            <div class="canvas-cell">
+              <h4>🏗️ 核心资源</h4>
+              <p>AI技术能力、题库数据、用户数据、品牌</p>
+            </div>
+            <div class="canvas-cell">
+              <h4>💰 收入来源</h4>
+              <p>订阅制（月卡¥29）、单次诊断（¥9.9）、课程推荐佣金</p>
+            </div>
+            <div class="canvas-cell full">
+              <h4>💎 价值主张</h4>
+              <p>
+                用AI帮家长5分钟诊断孩子学习薄弱点，提供个性化学习规划，省去请家教的高额费用
+              </p>
+            </div>
+            <div class="canvas-cell">
+              <h4>👥 客户关系</h4>
+              <p>社区运营、定期学情报告、1对1答疑</p>
+            </div>
+            <div class="canvas-cell">
+              <h4>📣 渠道</h4>
+              <p>小红书种草、微信社群、学校合作、短视频</p>
+            </div>
+            <div class="canvas-cell">
+              <h4>👤 目标客户</h4>
+              <p>25-40岁K12学生家长，一二线城市为主</p>
+            </div>
+            <div class="canvas-cell">
+              <h4>💸 成本结构</h4>
+              <p>AI API调用费、获客成本、内容制作、服务器、人力</p>
+            </div>
+          </div>
+        </div>
+        <button class="copy-btn" onclick="copyText(this)">复制结果</button>
+      </div>
+
+      <div class="section">
+        <h2>🚀 功能4：行动建议</h2>
+        <div class="demo-input">
+          <h3>AI生成的30天行动计划</h3>
+          <pre>
+🚀 30天行动建议（10万预算）
+
+━━━━━━━━━━━━━━━━━━
+
+第1周：验证需求（预算：5000元）
+□ 在小红书发10篇"AI学习"相关内容，测试热度
+□ 建3个家长社群（各100人），做需求调研
+□ 用Claude做一个MVP：拍照识别+知识点诊断
+□ 目标：100个精准用户反馈
+
+第2周：搭建MVP（预算：10000元）
+□ 开发核心功能：拍照诊断+学习报告
+□ 接入OpenAI API做智能分析
+□ 部署到小程序或H5
+□ 目标：可运行的MVP
+
+第3周：小范围测试（预算：15000元）
+□ 在3个社群免费试用，收集反馈
+□ 优化产品体验
+□ 设计付费方案（月卡¥29）
+□ 目标：30个付费用户
+
+第4周：规模化（预算：30000元）
+□ 小红书投放测试（ROI>1.5才继续）
+□ 家长转介绍裂变（邀请3人免费1个月）
+□ 优化转化漏斗
+□ 目标：100个付费用户，月收入¥2900+
+
+剩余预算：40000元（留作下月运营）</pre
+          >
+        </div>
+        <button class="copy-btn" onclick="copyText(this)">复制结果</button>
+      </div>
+
+      <div class="section" style="text-align: center">
+        <h2>想要完整可部署版本？</h2>
+        <p style="color: #888; margin: 1rem 0">
+          包含后端API、行业数据库、报告导出
+        </p>
+        <a
+          href="../../index.html#contact"
+          style="
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            background: #3b82f6;
+            color: white;
+            border-radius: 8px;
+            text-decoration: none;
+          "
+          >联系我定制</a
+        >
+      </div>
+    </div>
+
+    <footer>
+      <p><a href="../../index.html">← 返回作品集</a> | © 2026 AI工作室</p>
+    </footer>
+
+    <script>
+      function copyText(btn) {
+        const pre =
+          btn.parentElement.querySelector("pre") ||
+          btn.previousElementSibling.querySelector("pre");
+        if (pre) {
+          navigator.clipboard.writeText(pre.textContent);
+          btn.textContent = "已复制 ✓";
+          setTimeout(() => (btn.textContent = "复制结果"), 2000);
+        }
+      }
+    </script>
+  </body>
+</html>
