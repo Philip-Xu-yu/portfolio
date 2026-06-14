@@ -1,5 +1,6 @@
 """
 SQLite 数据库工具模块
+支持本地 SQLite 和 Turso (分布式 SQLite)
 提供统一的数据库操作接口
 """
 
@@ -20,14 +21,34 @@ def ensure_db_dir():
         os.makedirs(db_dir, exist_ok=True)
 
 
-@contextmanager
-def get_db():
-    """获取数据库连接（上下文管理器）"""
+def get_connection():
+    """获取数据库连接（支持 Turso 和本地 SQLite）"""
+    turso_url = os.getenv("TURSO_DATABASE_URL")
+    turso_token = os.getenv("TURSO_AUTH_TOKEN")
+
+    if turso_url and turso_token:
+        # 使用 Turso (分布式 SQLite)
+        try:
+            import libsql_experimental as libsql
+            conn = libsql.connect(turso_url, auth_token=turso_token)
+            return conn
+        except ImportError:
+            # 如果没有安装 libsql，回退到本地 SQLite
+            pass
+
+    # 使用本地 SQLite
     ensure_db_dir()
     conn = sqlite3.connect(db_config.path)
     conn.row_factory = sqlite3.Row
     conn.execute("PRAGMA journal_mode=WAL")
     conn.execute("PRAGMA foreign_keys=ON")
+    return conn
+
+
+@contextmanager
+def get_db():
+    """获取数据库连接（上下文管理器）"""
+    conn = get_connection()
     try:
         yield conn
         conn.commit()

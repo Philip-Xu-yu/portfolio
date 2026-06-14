@@ -21,6 +21,10 @@ class AIConfig:
 @dataclass(frozen=True)
 class DatabaseConfig:
     """数据库配置"""
+    # Turso 配置（优先）
+    turso_url: str = os.getenv("TURSO_DATABASE_URL", "")
+    turso_token: str = os.getenv("TURSO_AUTH_TOKEN", "")
+    # 本地 SQLite 配置（回退）
     path: str = os.getenv("DATABASE_URL", "data/app.db")
     backup_enabled: bool = True
 
