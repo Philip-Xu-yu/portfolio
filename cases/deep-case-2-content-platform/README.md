@@ -1,46 +1,67 @@
-# 深度案例2：AI内容生产平台
+# AI内容平台
 
-> 批量生成多平台内容：选题、文案、标题、标签
+> 内容创作、分析、优化一体化
 
----
+## ✨ v2.0 新特性
+
+- **SQLite 持久化** - 数据重启不丢失
+- **结构化 JSON 输出** - 分析结果可量化
+- **历史记录** - 查看之前的生成/分析记录
+- **统一 API 格式** - 标准化的请求/响应格式
+- **错误重试** - 自动重试失败的 AI 调用
+- **内存缓存** - 相同请求不重复调用 AI
 
 ## 功能
 
-- 选题生成：输入领域，批量生成选题
-- 文案生成：输入选题，生成多平台文案
-- 标题优化：生成5个备选标题
-- 标签匹配：自动匹配热门标签
-- 批量处理：一次生成10篇内容
-- 内容分析：分析文案爆款因素
+- AI 内容创作
+- 内容质量分析
+- 内容优化建议
+- 内容库管理
+- 统计数据
 
-## 支持平台
+## 快速开始
 
-- 小红书
-- 抖音
-- 公众号
-- B站
-- 微博
-
-## 技术栈
-
-- 后端：FastAPI
-- AI：OpenAI API
-- 前端：HTML + CSS + JS
-
-## 快速启动
+### 1. 安装依赖
 
 ```bash
 pip install -r requirements.txt
-export OPENAI_API_KEY="your-key"
+```
+
+### 2. 配置环境变量
+
+```bash
+cp .env.example .env
+# 编辑 .env 文件，填入你的 API Key
+```
+
+### 3. 启动服务
+
+```bash
 python app.py
 ```
 
-## 适合谁
+访问 http://localhost:8000 查看应用
 
-- 自媒体人
-- 内容运营团队
-- MCN机构
+## API 文档
 
-## 定价
+启动后访问 http://localhost:8000/docs 查看 API 文档
 
-高级版 ¥499（含源码、部署、培训、30天支持）
+## 技术栈
+
+- **后端**: FastAPI + SQLite
+- **AI**: OpenAI 兼容 API（支持多种模型）
+- **部署**: 支持 Docker / Render / Railway
+
+## 环境变量
+
+| 变量 | 说明 | 默认值 |
+|------|------|--------|
+| AI_BASE_URL | AI API 地址 | https://token-plan-cn.xiaomimimo.com/v1 |
+| AI_API_KEY | AI API Key | - |
+| AI_MODEL | 模型名称 | mimo-v2.5-pro |
+| DATABASE_URL | 数据库路径 | data/app.db |
+| PORT | 服务端口 | 8000 |
+
+## License
+
+MIT

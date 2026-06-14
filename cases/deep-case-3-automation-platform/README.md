@@ -1,49 +1,67 @@
-# 深度案例3：AI自动化工作流平台
+# AI自动化平台
 
-> 可视化编辑、定时触发、多渠道输出、预置模板
+> 可视化AI流水线编排
 
----
+## ✨ v2.0 新特性
+
+- **SQLite 持久化** - 数据重启不丢失
+- **结构化 JSON 输出** - 分析结果可量化
+- **历史记录** - 查看之前的生成/分析记录
+- **统一 API 格式** - 标准化的请求/响应格式
+- **错误重试** - 自动重试失败的 AI 调用
+- **内存缓存** - 相同请求不重复调用 AI
 
 ## 功能
 
-- 可视化工作流编辑器
-- 多种触发方式（定时/Webhook/手动）
-- 数据采集（热点/数据/API）
-- AI处理（分析/生成/翻译）
-- 多渠道输出（飞书/邮箱/控制台）
-- 6个预置模板
-- 执行日志和监控
+- 4个预置流水线模板
+- 多步骤执行引擎
+- 执行历史记录
+- 步骤进度追踪
+- 统计数据
 
-## 预置模板
+## 快速开始
 
-1. 自媒体内容助手
-2. 客服自动回复
-3. 数据日报生成
-4. 邮件自动分类
-5. 商品描述生成
-6. 会议纪要自动化
-
-## 技术栈
-
-- 后端：FastAPI
-- 定时任务：APScheduler
-- AI：OpenAI API
-- 前端：HTML + CSS + JS
-
-## 快速启动
+### 1. 安装依赖
 
 ```bash
 pip install -r requirements.txt
-export OPENAI_API_KEY="your-key"
+```
+
+### 2. 配置环境变量
+
+```bash
+cp .env.example .env
+# 编辑 .env 文件，填入你的 API Key
+```
+
+### 3. 启动服务
+
+```bash
 python app.py
 ```
 
-## 适合谁
+访问 http://localhost:8000 查看应用
 
-- 自媒体运营
-- 电商卖家
-- 小企业主
+## API 文档
 
-## 定价
+启动后访问 http://localhost:8000/docs 查看 API 文档
 
-高级版 ¥499（含源码、部署、培训、30天支持）
+## 技术栈
+
+- **后端**: FastAPI + SQLite
+- **AI**: OpenAI 兼容 API（支持多种模型）
+- **部署**: 支持 Docker / Render / Railway
+
+## 环境变量
+
+| 变量 | 说明 | 默认值 |
+|------|------|--------|
+| AI_BASE_URL | AI API 地址 | https://token-plan-cn.xiaomimimo.com/v1 |
+| AI_API_KEY | AI API Key | - |
+| AI_MODEL | 模型名称 | mimo-v2.5-pro |
+| DATABASE_URL | 数据库路径 | data/app.db |
+| PORT | 服务端口 | 8000 |
+
+## License
+
+MIT
