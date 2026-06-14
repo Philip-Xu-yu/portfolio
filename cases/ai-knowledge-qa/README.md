@@ -54,13 +54,13 @@ python app.py
 
 ## 环境变量
 
-| 变量 | 说明 | 默认值 |
-|------|------|--------|
-| AI_BASE_URL | AI API 地址 | https://token-plan-cn.xiaomimimo.com/v1 |
-| AI_API_KEY | AI API Key | - |
-| AI_MODEL | 模型名称 | mimo-v2.5-pro |
-| DATABASE_URL | 数据库路径 | data/app.db |
-| PORT | 服务端口 | 8000 |
+| 变量         | 说明        | 默认值                                  |
+| ------------ | ----------- | --------------------------------------- |
+| AI_BASE_URL  | AI API 地址 | https://token-plan-cn.xiaomimimo.com/v1 |
+| AI_API_KEY   | AI API Key  | -                                       |
+| AI_MODEL     | 模型名称    | mimo-v2.5-pro                           |
+| DATABASE_URL | 数据库路径  | data/app.db                             |
+| PORT         | 服务端口    | 8000                                    |
 
 ## License
 
